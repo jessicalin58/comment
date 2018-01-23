@@ -16,12 +16,20 @@
 // });
 
 Route::get('/', function () {
-    return view('dash');
+    return view('promo');
 });
 
+Route::get('/upload', function () {
+    return view('upload');
+});
 Route::get('/react', function () {
     return view('index');
 });
+
+Route::get('/comment', function () {
+    return view('comment');
+});
+
 
 Auth::routes();
 

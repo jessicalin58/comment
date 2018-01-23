@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {FileUpload} from './FileUpload.js';
-
+import {CommentImage} from './CommentImage.js';
 // import   {App} from './App.js';
 
-export default class Example extends Component {
+export default class Comment extends Component {
     render() {
         return (
+
             <div className="container">
                 <div className="row">
-         
+
                     <div className="col-md-9">
                         <div className="panel panel-default">
                             <div className="panel-heading">
-                            
-                            <FileUpload />
-                            
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-3">
-                        <div className="panel panel-default">
-                            <div className="panel-heading" className="teammate-box">
+
+                                <CommentImage />
 
                             </div>
                         </div>
-                   </div>
+                    </div>
+                    <div className="col-sm-3" style={{ 'opacity': '1' }} >
+                        <div className="panel panel-default">
+                            <div className="panel-heading" className="teammate-box-active">
+
+                            </div>
+                        </div>
+                    </div>
+                  
                 </div>
-                <div className ="row">
+                <div className="row">
                     <a href="http://localhost:8000/comment"> -> Next</a>
                 </div>
             </div>
@@ -35,7 +36,6 @@ export default class Example extends Component {
     }
 }
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
+if (document.getElementById('test')) {
+    ReactDOM.render(<Comment />, document.getElementById('test'));
 }
-

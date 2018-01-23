@@ -12,6 +12,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Favicon Link -->
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}">
+    <!-- jQuery cdn -->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
     <div id="app">
@@ -28,8 +33,11 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Comment') }}
+                    <a class="navbar-brand"  href="{{ url('/') }}">
+                    <img src="http://res.cloudinary.com/jessicalin/image/upload/v1516420163/jn16lbldh2mkxxn7az32.png" height="30">
+                   
+                      
+
                     </a>
                 </div>
 
@@ -75,15 +83,33 @@
 
     </div>
 
-
+        <div class="container">
         @section('sidebar')
-            This is the master sidebar.
+        @yield('sidebar')
+        </div>
+           
         @show
 
+  
+        <!-- Upload Info -->
+        <!-- Pulling info from React: dash view | component: FileUpload -->
+        <div class="container">
+            @yield('homePage')
+        </div>
+
+
+        <!-- Upload Info -->
+        <!-- Pulling info from React: dash view | component: FileUpload -->
         <div class="container">
             @yield('dataImport')
         </div>
 
+         <!-- Pulling info from React: dash view | component: CommentImport -->
+        <div class="container">
+            @yield('commentImport')
+        </div>
+
+    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

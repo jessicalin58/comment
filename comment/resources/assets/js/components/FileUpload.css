@@ -1,0 +1,203 @@
+/* HomePage stylize */
+
+#title-home {
+    color: rgb(246, 247, 255);
+    font-size: 30px;
+    font-weight: 640;
+}
+
+#title-home-instruction {
+    color: #58D9FF;
+}
+
+#title-home-thin {
+    color: white;
+    font-weight: 200;
+}
+
+.home-text {
+    color:white;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+#home-italic {
+
+    color:white;
+    font-style: italic;
+    font-weight: 100;
+    padding-bottom:30px;
+}
+
+/* Upload section stylize */
+.upload-text {
+    margin-top:2%;
+    /* margin-bottom:10%; */
+    text-align: center;
+    font-family: 'Proxima Nova';
+    color: #838383;
+}
+
+.upload-subtitle {
+    /* margin-top: 2%;*/
+    margin-bottom: 10%; 
+    text-align: center;
+    font-family: 'Proxima Nova';
+    color: #a3a3a3;
+    font-size: 12px;
+}
+
+strong {
+    color: #5DB4FF;
+    cursor: pointer;
+}
+
+body{
+    /* background-color:red; */
+      background-image: url("http://res.cloudinary.com/jessicalin/image/upload/v1516419821/he5teer9swelgpntgmld.png");
+    background-size:100%;
+}
+
+
+/* Title Css */
+.title-content {
+     margin-left:5%;
+     font-family: 'Proxima Nova';
+     padding-bottom:1%;
+     line-height: 185%;
+
+}
+#title {
+    color: #7C8BFF;
+    font-size: 30px;
+    font-weight: 640;
+    
+}
+
+#title-instruction {
+    font-weight: 400;
+    font-size: 15px;
+
+}
+
+/* Sidebar */
+
+/* The side navigation menu */
+
+.sidenav {
+
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
+    left: 0;
+    background-color: transparent;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 210px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
+    margin-top:0%;
+}
+
+
+/* The navigation menu links */
+
+.sidenav a {
+    padding: 8px 0px 1px 110px;
+    text-decoration: none;
+    font-size: 12px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+#upload-icon {
+    background-image: url('./svg/upload.svg');
+    padding:20px;
+    min-height:10px;
+    /* max-width: 10%; */
+    background-repeat: no-repeat;
+    margin-left:30px;
+}
+
+
+
+
+/* When you mouse over the navigation links, change their color */
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+
+/* Position and style the close button (top right corner) */
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+/* Teammates Column */
+
+.col-sm-3 {
+    margin:0;
+    padding-left: 1px;
+       opacity: 0.3;
+
+}
+
+
+.teammate-box {
+    height:255px;
+    background-color:#FFFF;
+ 
+}
+.teammate-box-active {
+    height: 255px;
+    background-color: #FFFF;
+}
+
+/* Breadcrumb */
+
+.breadcrumb {
+    background-color:transparent;
+    margin-left:32%;
+}
+
+/* Icons */
+
+svg:hover {
+    fill:#7c8bff;
+}
