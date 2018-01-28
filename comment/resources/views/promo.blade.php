@@ -104,22 +104,37 @@ body{
     95% { transform: translateX(0rem) scale(1); }
 }
 
+#depoiments{
+    color:white;
+    font-size: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+.faq {
+    color: white;
+}
+
+#faq-bold {
+    font-weight: 800;
+}
+
+.fp-controlArrow.fp-prev {
+    left: -50px;
+    border-width: 28.5px 24px 28.5px 0;
+}
+
+.fp-controlArrow.fp-next {
+    right: -50px;
+    border-width: 28.5px 0 28.5px 24px;
+}
+
 </style>
 
-<link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
+<div id="fullpage">
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-<!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
-<script src="vendors/jquery.easings.min.js"></script>
-
-
-<!-- This following line is only necessary in the case of using the option `scrollOverflow:true` -->
-<script type="text/javascript" src="vendors/scrolloverflow.min.js"></script>
-
-<script type="text/javascript" src="jquery.fullPage.js"></script>
-
-
+<!-- Section 1 -->
+<div class="section">
 <!-- Title Info -->
 <div class="title-content">
 <div id="title-home"> Comment me. </div>
@@ -170,7 +185,47 @@ body{
 
 </div>
 </div>
+<!-- End of Section 1 -->
+</div>
 
+<!-- Section 1 -->
+<div class="section" id="depoiments"> 
+<div class="slide" id="depoiments"> " Working with Comment.me is such a breeze. It is our new standard for internal/external communication of our designs. We work in big teams and this app allows us to work together in a pretty organized fashion."-Designer"</div>
+<div class="slide"> " This site made this so much easier for us. It was incredible, we have worked with other businesses before and their method is like waiting in line under the sun with no water and crying babies. Working with this made it so easy to communicate the changes we wanted and how we wanted them to be done. 10/10 would use again." -Client </div>
+	<div class="slide"> Slide 2 </div>
+	<div class="slide"> Slide 3 </div>
+</div>
+
+
+
+<!-- Section 2 -->
+<div class="section">
+<div class="faq">
+    <h3 id="faq-bold">FAQ</h3>
+        <h4> What is comment.me? </h4>
+                <li> An app made to help developers and designers to comment or add notes into images </li>
+        <h4>Is it safe to upload my images?</h4>
+                <li> All images are currently being uploaded into "cloudinary" server and it is <i>public</i>. So I wouldn't upload anything personal that might harm you or someone else </li>
+</div>
+
+
+</div>
+
+
+</div>
+
+<!-- FullPage -->
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.extensions.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+	$('#fullpage').fullpage();
+});
+</script>
     
 
 @endsection

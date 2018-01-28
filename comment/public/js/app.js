@@ -65365,6 +65365,7 @@ var FileUpload = function (_React$Component) {
                     });
                     console.log(response);
                     console.log(response.body.public_id);
+                    console.log(_this4.state.public_id);
                 }
             });
         }

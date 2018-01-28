@@ -139,6 +139,7 @@ export class FileUpload extends React.Component {
                 });
                 console.log(response);
                 console.log(response.body.public_id);
+                console.log(this.state.public_id);
             }
         });
     }
