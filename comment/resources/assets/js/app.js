@@ -13,5 +13,12 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import Main from './components/Main';
+import Comment from './components/Comment';
+import CommentParent from './components/CommentParent';
+import MainComment from './components/MainComment';
+
+require('./components/Product')
+require('./components/AddComment');
 require('./components/Example');
 require('./components/Comment');

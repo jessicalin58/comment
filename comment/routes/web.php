@@ -23,7 +23,7 @@ Route::get('/upload', function () {
     return view('upload');
 });
 Route::get('/react', function () {
-    return view('index');
+    return view('welcome');
 });
 
 Route::get('/comment', function () {

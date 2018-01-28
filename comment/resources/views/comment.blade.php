@@ -4,7 +4,7 @@
 
 <!-- Progression Breadcrumb -->
 <div class="breadcrumb">
-<img src="http://res.cloudinary.com/jessicalin/image/upload/v1516479171/hmf0bfeiqboyy7pv7jbp.png" width='320'>
+<img src="https://image.ibb.co/hasnJb/phase2.png" width='320'>
 </div>
 
 <!-- Title Info -->
@@ -62,11 +62,14 @@
 <div id="main">
   
 
-<div id="test"></div>
+<div id="comment"></div>
+<!-- <div id="root"></div> -->
+<!-- Pass publicID to react component thourgh javascript -->
 
 </div>
 
 <script>
+
 
   $( document ).ready(function() {
      document.getElementById("mySidenav").style.width = "150px";

@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Product;
+use App\Comment;
 
-class ProductTableSeeder extends Seeder
+class CommentTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,11 @@ class ProductTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         //Create 2 images
-        for ($i = 0;$i < 2; $i++) {
-            Product::create([
-                'title' => $faker->title,
+        for ($i = 0;$i < 10; $i++) {
+            Comment::create([
+                'name' => $faker->title,
                 'comment'=> $faker->paragraph,
-                'url'=>$faker->paragraph
+                'url'=>$faker->title
 
             ]);
         }

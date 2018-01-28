@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+// use App\Product;
+use App\Comment;
+
 
 class DatabaseSeeder extends Seeder
 {
