@@ -14,6 +14,18 @@ class ProductsController extends Controller
         return Product::all();
     }
 
+    // public function highchart()
+    // {
+    //     $product = Product:all();
+    //     return redirect()->route('comment', ['public_id'=>2])
+    //         -> with('info,test');
+    // }
+
+    public function getImageData($public_id){
+        $data['public_id'] = $public_id;
+        return View::make('comment', $public_id);
+    }
+
     public function show(Product $product)
     {
         return $product;

@@ -12,8 +12,57 @@
     color:white;
     text-align: center;
     font-family: 'Proxima Nova';
+    position:absolute;
+      top: 50%;
+      left: 60%;
+      /* right: 10;
+      bottom: 10; */
+       cursor: move;
+       /* fallback if grab cursor is unsupported */
+
+       cursor: grab;
 }
 
+.circle2 {
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    background: #7c8bff;
+    margin: 0 auto;
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    font-family: 'Proxima Nova';
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    /* right: 10;
+      bottom: 10; */
+       cursor: move;
+       /* fallback if grab cursor is unsupported */
+
+       cursor: grab;
+}
+
+.circle3 {
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    background: #7c8bff;
+    margin: 0 auto;
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    font-family: 'Proxima Nova';
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    /* right: 10;
+      bottom: 10; */
+    cursor: move;
+    /* fallback if grab cursor is unsupported */
+    cursor: grab;
+}
 .pulse1 {
     position: relative;
     background: rgb(21, 73, 97);
@@ -233,7 +282,7 @@ body{
 /* The navigation menu links */
 
 .sidenav a {
-    padding: 8px 0px 1px 110px;
+    padding: 8px 0px 1px 40px;
     text-decoration: none;
     font-size: 12px;
     color: #818181;
@@ -271,6 +320,27 @@ body{
 }
 
 
+/* Media query for sidebar */
+
+@media screen and (max-width: 1000px) and (min-width: 700px) {
+
+    #upload-icon {
+        background-image: url('./svg/upload.svg');
+        padding: 5px;
+        min-height: 10px;
+        /* max-width: 10%; */
+        background-repeat: no-repeat;
+        margin-left: 10px;
+    }
+
+    .sidenav a {
+        padding: 8px 0px 1px 30px;
+
+    }
+
+}
+
+
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 
 #main {
@@ -287,6 +357,8 @@ body{
     }
     .sidenav a {
         font-size: 18px;
+        padding: 8px 0px 1px 30px;
+
     }
 }
 

@@ -27,7 +27,15 @@ Route::get('/react', function () {
 });
 
 Route::get('/comment', function () {
-    return view('comment');
+    //fetch image based on public id
+    return view('comment')->with('infotest');
+});
+
+// Route::get('/comment/{public_id}', ['uses' => 'ProductController@getImageData', 'as'=>'routeName']);
+
+Route::get('/comment/{name?}', function ($name = 'numbers'){
+        return view('comment');
+
 });
 
 

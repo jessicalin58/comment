@@ -111,6 +111,11 @@ body{
     font-style: italic;
 }
 
+#depoiment-text{
+    /* text-align: left; */
+    font-size: 15px;
+}
+
 .faq {
     color: white;
 }
@@ -121,12 +126,19 @@ body{
 
 .fp-controlArrow.fp-prev {
     left: -50px;
-    border-width: 28.5px 24px 28.5px 0;
+    border-width: 18.5px 14px 18.5px 0;
+    opacity: 0.3;
 }
 
 .fp-controlArrow.fp-next {
     right: -50px;
-    border-width: 28.5px 0 28.5px 24px;
+    border-width: 18.5px 0 18.5px 14px;
+        opacity: 0.3;
+
+}
+
+#bold {
+    font-weight: 800;
 }
 
 </style>
@@ -190,8 +202,23 @@ body{
 
 <!-- Section 1 -->
 <div class="section" id="depoiments"> 
-<div class="slide" id="depoiments"> " Working with Comment.me is such a breeze. It is our new standard for internal/external communication of our designs. We work in big teams and this app allows us to work together in a pretty organized fashion."-Designer"</div>
-<div class="slide"> " This site made this so much easier for us. It was incredible, we have worked with other businesses before and their method is like waiting in line under the sun with no water and crying babies. Working with this made it so easy to communicate the changes we wanted and how we wanted them to be done. 10/10 would use again." -Client </div>
+<div class="slide" id="depoiments"> " Working with <span id="bold">Comment.me</span> is such a breeze. It is our new standard for internal/external communication of our designs. We work in big teams and this app allows us<span id="bold"> to work together in a pretty organized fashion".</span>
+    <div class="container">
+    <div class="row">
+    <div class="col"><img src="https://image.ibb.co/dvUNKG/depoiment1.png"></div>
+    <div class="col" id="depoiment-text">Poodle Brown, <br>Product Marketing of Willy Wonka Factory</div>
+    </div>
+    </div>
+
+</div>
+<div class="slide"> " So easy, It was incredible. We have worked with other businesses before and their method is like <span id="bold">waiting in line under the sun with no water and crying babies.</span> Working with comment.me made it so easy to communicate the changes we wanted and how we wanted them to be done. <span id="bold">10/10 would use again."</span>
+    <div class="container">
+    <div class="row">
+    <div class="col"><img src="https://image.ibb.co/dvUNKG/depoiment1.png"></div>
+    <div class="col" id="depoiment-text">Poodle Brown, <br>Product Marketing of Willy Wonka Factory</div>
+    </div>
+    </div>
+</div>
 	<div class="slide"> Slide 2 </div>
 	<div class="slide"> Slide 3 </div>
 </div>
@@ -206,7 +233,19 @@ body{
                 <li> An app made to help developers and designers to comment or add notes into images </li>
         <h4>Is it safe to upload my images?</h4>
                 <li> All images are currently being uploaded into "cloudinary" server and it is <i>public</i>. So I wouldn't upload anything personal that might harm you or someone else </li>
-</div>
+        <h4> How do I upload an image? </h4>
+                <li> You can either drag and drop or click on the upload box </li>
+            <h4> How do I share my image? </h4>
+                <li> Currently you can only add hotspots and your own comments. Future updates will be released soon </li>
+                <h4> How do I delete a hotspot? </h4>
+                <li> Double click to delete a hotspot </li>
+                    <h4> 
+
+
+
+
+
+            </div>
 
 
 </div>

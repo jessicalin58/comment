@@ -63,6 +63,7 @@
   
 
 <div id="comment"></div>
+
 <!-- <div id="root"></div> -->
 <!-- Pass publicID to react component thourgh javascript -->
 
@@ -73,12 +74,11 @@
 
   $( document ).ready(function() {
      document.getElementById("mySidenav").style.width = "150px";
-    console.log( "ready!" );
 });
   /* Set the width of the side navigation to 250px */
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
+// function openNav() {
+//     document.getElementById("mySidenav").style.width = "250px";
+// }
 
 /* Set the width of the side navigation to 0 */
 // function closeNav() {

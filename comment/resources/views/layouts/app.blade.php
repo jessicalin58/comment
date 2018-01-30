@@ -18,6 +18,9 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.css" />
 
+    <!-- Boostrap responsive -->
+    <!-- <link rel="stylesheet" type="text/css" href="/AgTracker/resources/css/bootstrap-responsive.min.css"/> -->
+
 
 </head>
 <body>
@@ -62,6 +65,10 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ route('home')}}"> Dashboard </a>
+                                    </li>
+   
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

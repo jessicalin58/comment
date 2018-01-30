@@ -49,6 +49,9 @@ export class FileUpload extends React.Component {
         this.handleImageChange = this.handleImageChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onImageDrop = this.onImageDrop.bind(this);
+
+        this.sendPublicIdData = this.sendPublicIdData.bind(this);
+
     }
 
 
@@ -137,15 +140,21 @@ export class FileUpload extends React.Component {
                     uploadedFileCloudinaryUrl: response.body.secure_url,
                     public_id: response.body.public_id
                 });
-                console.log(response);
-                console.log(response.body.public_id);
-                console.log(this.state.public_id);
+                // console.log(response);
+                // console.log(response.body.public_id);
+                // console.log(this.state.public_id);
             }
         });
     }
 
+    sendPublicIdData(){
+        // localStorage.state(public_id);
+        const url = `/comment/${this.state.public_id}`;
+        window.open(url, '_blank');
+    }
  
     render() {
+        console.log("loggeg" + this.state.public_id);
         const hidden = this.state.checked ? ' ' : 'hidden';
         let { imagePreviewUrl } = this.state;
         let imagePreview = this.state.statusMsg;
@@ -186,16 +195,27 @@ export class FileUpload extends React.Component {
 
 
                         </div>}
+                        
                 </div>
 
-                <Router >
+                <Comment public_id={this.state.public_id} />
+
+                <button type="button" className="btn" onClick={this.sendPublicIdData} > Send publicId </button>
+
+                <a href={"/comment" + "/"+ this.state.public_id} > query  </a>
+
+                <Router>
                 <div>
+                <div onClick={this.sendPublicIdData} > Upload </div>
+                <Link to={`/comment/${this.state.public_id}`} > Upload2 </Link>
                  <Route path="/comment/:public_id" render={(props) => <Comment public_id={this.state.public_id} {...props} /> } /> 
                 </div>
                 </Router>
                 <a href="" onClick={this.handleSubmit} className="icon-button cloudicon"> -> Submit </a>
             
             
+
+                <a href="{{ route('test.route', array('id'=>1, 'something' => 'here', 'another' = > 'there')) }}"> Route test </a>
                 </form>
         )
     }

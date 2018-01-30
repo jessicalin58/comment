@@ -63,10 +63,10 @@ class AddProduct extends Component {
                 <form onSubmit={this.handleSubmit}>
               
                 <label>
-                            <input type='text' style={divStyle} placeholder='Type comment here' onChange={(e)=>this.handleInput('comment',e)} />
+                    <input type='text' style={divStyle} placeholder='Type comment here' onChange={(e)=>this.handleInput('comment',e)} />
                 </label>
-                <div style={{marginLeft: 45}}>
-                <input style={addNoteStyle} type="submit" value="+ Add Note" />
+                    <div style={{marginLeft: 45}}>
+                    <input style={addNoteStyle} type="submit" value="+ Add Note" />
                 </div>
                 </form>
             </div>
