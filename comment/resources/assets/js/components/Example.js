@@ -28,9 +28,6 @@ export default class Example extends Component {
                    </div>
                 </div>
                 <div className ="row">
-
-
-                    <a href="/comment"> -> Next</a>
                 </div>
             </div>
         );

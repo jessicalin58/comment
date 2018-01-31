@@ -7,6 +7,12 @@ import cloudinary from 'cloudinary-core';
 import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 import Draggable from 'react-draggable'; // The default
 import FileUpload from './FileUpload.js';
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+    Redirect
+} from 'react-router-dom'
 
 // import html2canvas from 'html2canvas';
 
@@ -18,6 +24,13 @@ const upload_style = {
 // html2canvas(document.body).then(function (canvas) {
 //     document.body.appendChild(canvas);
 // });
+// const Comment = ({ match }) => (
+//     <div>
+//        <h3> id: {math.params.this.state.public_id} </h3>
+//     </div>
+// )
+
+
 
 export class Comment extends React.Component {
     constructor(props) {
@@ -28,7 +41,7 @@ export class Comment extends React.Component {
             inputLinkThreeClicked: false,
             receivedImage: this.props.publicId
         };
-      this.props = {}
+    //   this.props.children = this.props.children.bind(this);
     }
     
     handleAddSecondInput() {
@@ -49,6 +62,7 @@ export class Comment extends React.Component {
             ) : null
         
     }
+    
 
     handleAddForthInput(){
 
@@ -62,7 +76,10 @@ export class Comment extends React.Component {
         ): null
     }
 
-    componentWillMount(){
+
+    componentDidMount(){
+        console.log("componentdidmount state", this.state);
+        console.log("componentdidmount" , this.props);
         // console.log(this.state.receivedImage);
 
     }
@@ -76,42 +93,58 @@ export class Comment extends React.Component {
     }
 
     componentWillReceiveProps(oldProps, newProps){
-        console.log("The id", oldProps.public_id);
+        console.log("The id", newProps.public_id);
+
+    }
+
+    getChildrenProps(){
+        return props[this.props.route.match];
+
     }
 
     
+    
 
     render() {
-        const dragHandler = {onStart: this.onStart, onStop:this.onStop};
+        const FileSent = ({ match }) => (
+            <div>
+                <h3> id: {match.params.id} </h3>
+            </div>
+        )
+        console.log("from url:" + " " + this.props.routes);
 
+        const dragHandler = {onStart: this.onStart, onStop:this.onStop};
+        // const children = React.cloneElement(
+        //     this.props.children,
+        //     getChildrenProps()
+        // );
         return (
             <form>
  
                 <div>
-
                     <CloudinaryContext cloudName="jessicalin" style={upload_style}>
-                        <Image publicId={this.props.public_id} 
+                        <Image publicId={this.state.receivedImage} 
                          onClick={() => {this.handleAddSecondInput(); this.handleAddThirdInput(); this.handleAddForthInput()}}
                          onDoubleClick={() => this.deleteInput()}
                          >
                             <Transformation width="650" crop="scale" angle="0" />
                         </Image>
 
-                        {this.state.inputLinkOneClicked ?
-                            <Draggable bound="parent " {...dragHandler}>
-                                <div className="circle"> 1 </div>
-                            </Draggable>
+                            {this.state.inputLinkOneClicked ?
+                                <Draggable bound="parent " {...dragHandler}>
+                                     <div className="circle"> 1 </div>
+                                </Draggable>
                             :
                             <div></div>
-                        }
+                            }
 
-                        {this.state.inputLinkTwoClicked ?
-                            <Draggable bound="parent " {...dragHandler}>
-                                <div className="circle2"> 2 </div>
-                            </Draggable>
+                            {this.state.inputLinkTwoClicked ?
+                                <Draggable bound="parent " {...dragHandler}>
+                                     <div className="circle2"> 2 </div>
+                                </Draggable>
                             :
                             <div></div>
-                        }
+                            }
 
 
                         {this.state.inputLinkThreeClicked ?

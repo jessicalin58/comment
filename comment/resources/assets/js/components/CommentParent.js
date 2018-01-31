@@ -5,6 +5,7 @@ import AddComment from './AddComment';
 // import   {App} from './App.js';
 
 export default class CommentParent extends Component {
+
     render() {
         return (
      
@@ -15,7 +16,7 @@ export default class CommentParent extends Component {
                         <div className="panel panel-default">
                             <div className="panel-heading">
 
-                                <Comment />
+                                <Comment publicId={this.props.publicId} />
 
                             </div>
                         </div>
@@ -43,6 +44,6 @@ export default class CommentParent extends Component {
 }
 
 if (document.getElementById('comment')) {
-    ReactDOM.render(<CommentParent/>, document.getElementById('comment'));
+    ReactDOM.render(<CommentParent publicId={window.location.pathname.substring(9)} />, document.getElementById('comment'));
 }
 

@@ -32,6 +32,7 @@ const upload_style = {
 
 
 
+
 export class FileUpload extends React.Component {
     constructor(props) {
         super(props);
@@ -154,7 +155,25 @@ export class FileUpload extends React.Component {
     }
  
     render() {
-        console.log("loggeg" + this.state.public_id);
+
+        const Params = () => (
+            
+            <Router>
+                <div>
+                    <div onClick={this.sendPublicIdData} className="AddFileButtonStyle" > Upload Div </div>
+                    <Route path="/comment/:id" render={(props) => (<Comment {...props} publicId={this.state.public_id} />) }  />
+                </div>
+            </Router>
+
+        )
+      
+        const FileSent = ({ match }) => (
+            <div>
+                <h3> id: {match.params.id} </h3>
+            </div>
+        )
+
+        // console.log("from url:" + " " +  this.props);
         const hidden = this.state.checked ? ' ' : 'hidden';
         let { imagePreviewUrl } = this.state;
         let imagePreview = this.state.statusMsg;
@@ -165,13 +184,14 @@ export class FileUpload extends React.Component {
         }
         return (
             <form>
+            
                 <div className="FileUpload">
                    
                     <Dropzone
                         style={upload_style}
                         onDrop={this.onImageDrop.bind(this)}
                         multiple={false}
-                        accept="image/jpg,image/png">
+                        accept=".jpg,.png">
                         {imagePreview}
                         <div className= { hidden }>
                         <img src={uploadSVG} style={{'maxHeight':'50px', 'marginLeft':'45%', 'marginTop':'10%'}}/>
@@ -184,43 +204,25 @@ export class FileUpload extends React.Component {
 
                 <div>
                 
-                    {this.state.uploadedFileCloudinaryUrl === '' ? null :
-                        <div>
-                            
-                            <img src={this.state.uploadedFileCloudinaryUrl}
-                            />
+                        {this.state.uploadedFileCloudinaryUrl === '' ? null :
+                        <div>  
+                            <img src={this.state.uploadedFileCloudinaryUrl}/>
                             <p>{this.state.uploadedFileCloudinaryUrl}</p>
                             <p>{this.state.public_id}</p>
-                            
-
-
                         </div>}
                         
                 </div>
 
-                <Comment public_id={this.state.public_id} />
-
-                <button type="button" className="btn" onClick={this.sendPublicIdData} > Send publicId </button>
-
-                <a href={"/comment" + "/"+ this.state.public_id} > query  </a>
-
-                <Router>
-                <div>
-                <div onClick={this.sendPublicIdData} > Upload </div>
-                <Link to={`/comment/${this.state.public_id}`} > Upload2 </Link>
-                 <Route path="/comment/:public_id" render={(props) => <Comment public_id={this.state.public_id} {...props} /> } /> 
-                </div>
-                </Router>
-                <a href="" onClick={this.handleSubmit} className="icon-button cloudicon"> -> Submit </a>
-            
-            
-
-                <a href="{{ route('test.route', array('id'=>1, 'something' => 'here', 'another' = > 'there')) }}"> Route test </a>
+                    <Params />
                 </form>
+                
         )
+        
     }
 }
 // <Link to="/comment" params={{ public_id: this.state.public_id }}> Upload </Link>
+// <a href="" onClick={this.handleSubmit} className="icon-button cloudicon"> -> Submit </a>
 
+// <Link to={`/comment/${this.state.public_id}`} > Upload Link </Link>
 
 export default FileUpload; 

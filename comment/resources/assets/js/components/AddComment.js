@@ -18,6 +18,9 @@ const userPicUpload = {
     width: '100%',
     height: '150%'
 }
+const upload_style = {
+    margin: 1
+}
 
 class AddComment extends Component {
 
@@ -31,7 +34,8 @@ class AddComment extends Component {
             newProduct: {
                 title: '',
                 comment: '',
-                url: ''
+                url: '',
+                checked: false
             },
             products: [],
             currentProduct: null
@@ -75,9 +79,9 @@ class AddComment extends Component {
                     uploadedFileCloudinaryUrl: response.body.secure_url,
                     public_id: response.body.public_id
                 });
-                console.log(response);
-                console.log(response.body.public_id);
-                console.log(this.state.public_id);
+                // console.log(response);
+                // console.log(response.body.public_id);
+                // console.log(this.state.public_id);
             }
         });
     }
@@ -190,6 +194,7 @@ class AddComment extends Component {
 
     
     render() {
+
         const dateToFormat = Date.now();
 
         const divStyle = {
@@ -205,11 +210,11 @@ class AddComment extends Component {
             marginTop: 6
         }
 
-
-
+   
+        const hidden = this.state.checked ? '': 'hidden';
 
         return (
-            <div style={{ height: 20 }}>
+            <div>
                 <div class="container-fluid">
                     <div class="row" style={{flex:1, alignItems: 'stretch'}}>
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style={divStyle}> 
@@ -217,10 +222,13 @@ class AddComment extends Component {
                             <div className="FileUpload">
 
                                 <Dropzone
+                                    className="drop-zone"                                   
                                     onDrop={this.onImageDrop.bind(this)}
                                     multiple={false}
-                                    accept="image/jpg,image/png">
-                
+                                    accept=".jpg,.png">
+                                    <div className = {hidden}>
+                                    test
+                                    </div>
                                 </Dropzone>
 
                             </div>
@@ -236,7 +244,6 @@ class AddComment extends Component {
                         </div>}
                 </div>
 
-                        <img src="https://image.ibb.co/mwEVMw/face_Picture_2x.png"  /> 
                         </div>
 
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style={{alignSelf:'flex-end'}}>
@@ -272,5 +279,8 @@ class AddComment extends Component {
 // <label>
 //     <input style={placeholderStyle} type='text' placeholder='Type comment here' onChange={(e) => this.handleInput('comment', e)} />
 // </label>
+
+// <img src="https://image.ibb.co/mwEVMw/face_Picture_2x.png" /> 
+
 
 export default AddComment;

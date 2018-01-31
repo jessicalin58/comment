@@ -14214,6 +14214,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_draggable__ = __webpack_require__(399);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_draggable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_draggable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__FileUpload_js__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_router_dom__ = __webpack_require__(400);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -14234,6 +14235,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  // The default
 
 
+
 // import html2canvas from 'html2canvas';
 
 //Upload file box style
@@ -14243,6 +14245,12 @@ var upload_style = {
     // html2canvas(document.body).then(function (canvas) {
     //     document.body.appendChild(canvas);
     // });
+    // const Comment = ({ match }) => (
+    //     <div>
+    //        <h3> id: {math.params.this.state.public_id} </h3>
+    //     </div>
+    // )
+
 
 };var Comment = function (_React$Component) {
     _inherits(Comment, _React$Component);
@@ -14258,7 +14266,7 @@ var upload_style = {
             inputLinkThreeClicked: false,
             receivedImage: _this.props.publicId
         };
-        _this.props = {};
+        //   this.props.children = this.props.children.bind(this);
         return _this;
     }
 
@@ -14286,10 +14294,11 @@ var upload_style = {
             })) : null;
         }
     }, {
-        key: 'componentWillMount',
-        value: function componentWillMount() {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log("componentdidmount state", this.state);
+            console.log("componentdidmount", this.props);
             // console.log(this.state.receivedImage);
-
         }
     }, {
         key: 'deleteInput',
@@ -14304,15 +14313,39 @@ var upload_style = {
     }, {
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps(oldProps, newProps) {
-            console.log("The id", oldProps.public_id);
+            console.log("The id", newProps.public_id);
+        }
+    }, {
+        key: 'getChildrenProps',
+        value: function getChildrenProps() {
+            return props[this.props.route.match];
         }
     }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
 
-            var dragHandler = { onStart: this.onStart, onStop: this.onStop };
+            var FileSent = function FileSent(_ref) {
+                var match = _ref.match;
+                return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                    'div',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                        'h3',
+                        null,
+                        ' id: ',
+                        match.params.id,
+                        ' '
+                    )
+                );
+            };
+            console.log("from url:" + " " + this.props.routes);
 
+            var dragHandler = { onStart: this.onStart, onStop: this.onStop };
+            // const children = React.cloneElement(
+            //     this.props.children,
+            //     getChildrenProps()
+            // );
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                 'form',
                 null,
@@ -14324,7 +14357,7 @@ var upload_style = {
                         { cloudName: 'jessicalin', style: upload_style },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                             __WEBPACK_IMPORTED_MODULE_6_cloudinary_react__["Image"],
-                            { publicId: this.props.public_id,
+                            { publicId: this.state.receivedImage,
                                 onClick: function onClick() {
                                     _this2.handleAddSecondInput();_this2.handleAddThirdInput();_this2.handleAddForthInput();
                                 },
@@ -18691,6 +18724,9 @@ var userPicUpload = {
     width: '100%',
     height: '150%'
 };
+var upload_style = {
+    margin: 1
+};
 
 var AddComment = function (_Component) {
     _inherits(AddComment, _Component);
@@ -18707,7 +18743,8 @@ var AddComment = function (_Component) {
             newProduct: {
                 title: '',
                 comment: '',
-                url: ''
+                url: '',
+                checked: false
             },
             products: [],
             currentProduct: null
@@ -18753,9 +18790,9 @@ var AddComment = function (_Component) {
                         uploadedFileCloudinaryUrl: response.body.secure_url,
                         public_id: response.body.public_id
                     });
-                    console.log(response);
-                    console.log(response.body.public_id);
-                    console.log(_this2.state.public_id);
+                    // console.log(response);
+                    // console.log(response.body.public_id);
+                    // console.log(this.state.public_id);
                 }
             });
         }
@@ -18888,6 +18925,7 @@ var AddComment = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
+
             var dateToFormat = Date.now();
 
             var divStyle = {
@@ -18903,9 +18941,11 @@ var AddComment = function (_Component) {
                 marginTop: 6
             };
 
+            var hidden = this.state.checked ? '' : 'hidden';
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { style: { height: 20 } },
+                null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { 'class': 'container-fluid' },
@@ -18918,10 +18958,19 @@ var AddComment = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'FileUpload' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_dropzone__["a" /* default */], {
-                                    onDrop: this.onImageDrop.bind(this),
-                                    multiple: false,
-                                    accept: 'image/jpg,image/png' })
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_7_react_dropzone__["a" /* default */],
+                                    {
+                                        className: 'drop-zone',
+                                        onDrop: this.onImageDrop.bind(this),
+                                        multiple: false,
+                                        accept: '.jpg,.png' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: hidden },
+                                        'test'
+                                    )
+                                )
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
@@ -18932,8 +18981,7 @@ var AddComment = function (_Component) {
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.state.uploadedFileCloudinaryUrl
                                     })
                                 )
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'https://image.ibb.co/mwEVMw/face_Picture_2x.png' })
+                            )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
@@ -18978,6 +19026,9 @@ var AddComment = function (_Component) {
 // <label>
 //     <input style={placeholderStyle} type='text' placeholder='Type comment here' onChange={(e) => this.handleInput('comment', e)} />
 // </label>
+
+// <img src="https://image.ibb.co/mwEVMw/face_Picture_2x.png" /> 
+
 
 /* harmony default export */ __webpack_exports__["default"] = (AddComment);
 
@@ -40505,7 +40556,41 @@ var FileUpload = function (_React$Component) {
         value: function render() {
             var _this5 = this;
 
-            console.log("loggeg" + this.state.public_id);
+            var Params = function Params() {
+                return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                    __WEBPACK_IMPORTED_MODULE_7_react_router_dom__["a" /* BrowserRouter */],
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                        'div',
+                        null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                            'div',
+                            { onClick: _this5.sendPublicIdData, className: 'AddFileButtonStyle' },
+                            ' Upload Div '
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_router_dom__["b" /* Route */], { path: '/comment/:id', render: function render(props) {
+                                return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Comment_js__["Comment"], _extends({}, props, { publicId: _this5.state.public_id }));
+                            } })
+                    )
+                );
+            };
+
+            var FileSent = function FileSent(_ref) {
+                var match = _ref.match;
+                return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                    'div',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                        'h3',
+                        null,
+                        ' id: ',
+                        match.params.id,
+                        ' '
+                    )
+                );
+            };
+
+            // console.log("from url:" + " " +  this.props);
             var hidden = this.state.checked ? ' ' : 'hidden';
             var imagePreviewUrl = this.state.imagePreviewUrl;
 
@@ -40526,7 +40611,7 @@ var FileUpload = function (_React$Component) {
                             style: upload_style,
                             onDrop: this.onImageDrop.bind(this),
                             multiple: false,
-                            accept: 'image/jpg,image/png' },
+                            accept: '.jpg,.png' },
                         imagePreview,
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                             'div',
@@ -40556,8 +40641,7 @@ var FileUpload = function (_React$Component) {
                     this.state.uploadedFileCloudinaryUrl === '' ? null : __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                         'div',
                         null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('img', { src: this.state.uploadedFileCloudinaryUrl
-                        }),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('img', { src: this.state.uploadedFileCloudinaryUrl }),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                             'p',
                             null,
@@ -40570,48 +40654,7 @@ var FileUpload = function (_React$Component) {
                         )
                     )
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Comment_js__["Comment"], { public_id: this.state.public_id }),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                    'button',
-                    { type: 'button', className: 'btn', onClick: this.sendPublicIdData },
-                    ' Send publicId '
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                    'a',
-                    { href: "/comment" + "/" + this.state.public_id },
-                    ' query  '
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                    __WEBPACK_IMPORTED_MODULE_7_react_router_dom__["a" /* BrowserRouter */],
-                    null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                        'div',
-                        null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                            'div',
-                            { onClick: this.sendPublicIdData },
-                            ' Upload '
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                            __WEBPACK_IMPORTED_MODULE_7_react_router_dom__["b" /* Link */],
-                            { to: '/comment/' + this.state.public_id },
-                            ' Upload2 '
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_router_dom__["c" /* Route */], { path: '/comment/:public_id', render: function render(props) {
-                                return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Comment_js__["Comment"], _extends({ public_id: _this5.state.public_id }, props));
-                            } })
-                    )
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                    'a',
-                    { href: '', onClick: this.handleSubmit, className: 'icon-button cloudicon' },
-                    ' -> Submit '
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                    'a',
-                    { href: '{{ route(\'test.route\', array(\'id\'=>1, \'something\' => \'here\', \'another\' = > \'there\')) }}' },
-                    ' Route test '
-                )
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](Params, null)
             );
         }
     }]);
@@ -40619,7 +40662,9 @@ var FileUpload = function (_React$Component) {
     return FileUpload;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 // <Link to="/comment" params={{ public_id: this.state.public_id }}> Upload </Link>
+// <a href="" onClick={this.handleSubmit} className="icon-button cloudicon"> -> Submit </a>
 
+// <Link to={`/comment/${this.state.public_id}`} > Upload Link </Link>
 
 /* unused harmony default export */ var _unused_webpack_default_export = (FileUpload);
 
@@ -79822,7 +79867,7 @@ exports = module.exports = __webpack_require__(382)(false);
 
 
 // module
-exports.push([module.i, "/* Hotspot */\n.containerDot {\n    width:20px;\n}\n.circle {\n    width: 20px;\n    height: 20px;\n    border-radius: 999px;\n    background:#7c8bff;\n    margin: 0 auto;\n    margin-top: 10px;\n    color:white;\n    text-align: center;\n    font-family: 'Proxima Nova';\n    position:absolute;\n      top: 50%;\n      left: 60%;\n      /* right: 10;\n      bottom: 10; */\n       cursor: move;\n       /* fallback if grab cursor is unsupported */\n\n       cursor: grab;\n}\n\n.circle2 {\n    width: 20px;\n    height: 20px;\n    border-radius: 999px;\n    background: #7c8bff;\n    margin: 0 auto;\n    margin-top: 10px;\n    color: white;\n    text-align: center;\n    font-family: 'Proxima Nova';\n    position: absolute;\n    top: 50%;\n    left: 70%;\n    /* right: 10;\n      bottom: 10; */\n       cursor: move;\n       /* fallback if grab cursor is unsupported */\n\n       cursor: grab;\n}\n\n.circle3 {\n    width: 20px;\n    height: 20px;\n    border-radius: 999px;\n    background: #7c8bff;\n    margin: 0 auto;\n    margin-top: 10px;\n    color: white;\n    text-align: center;\n    font-family: 'Proxima Nova';\n    position: absolute;\n    top: 50%;\n    left: 80%;\n    /* right: 10;\n      bottom: 10; */\n    cursor: move;\n    /* fallback if grab cursor is unsupported */\n    cursor: grab;\n}\n.pulse1 {\n    position: relative;\n    background: rgb(21, 73, 97);\n    width: 20px;\n    height: 20px;\n    margin: auto;\n    left: 0;\n    bottom: 20px;\n    right: 0;\n    z-index: 1;\n    opacity: 1;\n    border: 3px solid rgb(32, 103, 116);\n    animation: circlepulse 4s linear infinite;\n    -webkit-animation: circlepulse 4s linear infinite;\n    -moz-animation: circlepulse 4s linear infinite;\n    border-radius: 999px;\n    -webkit-border-radius: 999px;\n    -moz-border-radius: 999px;\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    -webkit-box-sizing: border-box;\n}\n\n@-webkit-keyframes circlepulse {\n    0% {\n        -webkit-transform: scale(5.6);\n        opacity: 0;\n    }\n    50% {\n        -webkit-transform: scale(.6);\n        opacity: 0;\n    }\n    60% {\n        -webkit-transform: scale(.9);\n        opacity: .2;\n    }\n    70% {\n        -webkit-transform: scale(1.1);\n        opacity: .35;\n    }\n    80% {\n        -webkit-transform: scale(1.25);\n        opacity: .2;\n    }\n    100% {\n        -webkit-transform: scale(1.4);\n        opacity: 0;\n    }\n}\n\n@-moz-keyframes circlepulse {\n    0% {\n        -moz-transform: scale(.6);\n        opacity: 0;\n    }\n    50% {\n        -moz-transform: scale(.6);\n        opacity: 0;\n    }\n    60% {\n        -moz-transform: scale(.9);\n        opacity: .2;\n    }\n    70% {\n        -moz-transform: scale(1.1);\n        opacity: .35;\n    }\n    80% {\n        -moz-transform: scale(1.25);\n        opacity: .2;\n    }\n    100% {\n        -moz-transform: scale(1.4);\n        opacity: 0;\n    }\n}\n\n@keyframes circlepulse {\n    0% {\n        transform: scale(.6);\n        opacity: 0;\n    }\n    50% {\n        transform: scale(.6);\n        opacity: 0;\n    }\n    60% {\n        transform: scale(.9);\n        opacity: .1;\n    }\n    70% {\n        transform: scale(1.1);\n        opacity: .25;\n    }\n    80% {\n        transform: scale(1.25);\n        opacity: .1;\n    }\n    100% {\n        transform: scale(1.4);\n        opacity: 0;\n    }\n}\n\n\n/* HomePage stylize */\n\n#title-home {\n    color: rgb(246, 247, 255);\n    font-size: 30px;\n    font-weight: 640;\n}\n\n#title-home-instruction {\n    color: #58D9FF;\n}\n\n#title-home-thin {\n    color: white;\n    font-weight: 200;\n}\n\n.home-text {\n    color:white;\n    font-weight: 800;\n    font-size: 18px;\n}\n\n#home-italic {\n\n    color:white;\n    font-style: italic;\n    font-weight: 100;\n    padding-bottom:30px;\n}\n\n/* Upload section stylize */\n.upload-text {\n    margin-top:2%;\n    /* margin-bottom:10%; */\n    text-align: center;\n    font-family: 'Proxima Nova';\n    color: #838383;\n}\n\n.upload-subtitle {\n    /* margin-top: 2%;*/\n    margin-bottom: 10%; \n    text-align: center;\n    font-family: 'Proxima Nova';\n    color: #a3a3a3;\n    font-size: 12px;\n}\n\nstrong {\n    color: #5DB4FF;\n    cursor: pointer;\n}\n\nbody{\n    /* background-color:red; */\n      background-image: url(\"http://res.cloudinary.com/jessicalin/image/upload/v1516419821/he5teer9swelgpntgmld.png\");\n    background-size:100%;\n}\n\n\n/* Title Css */\n.title-content {\n     margin-left:5%;\n     font-family: 'Proxima Nova';\n     padding-bottom:1%;\n     line-height: 185%;\n\n}\n#title {\n    color: #7C8BFF;\n    font-size: 30px;\n    font-weight: 640;\n    \n}\n\n#title-instruction {\n    font-weight: 400;\n    font-size: 15px;\n\n}\n\n/* Sidebar */\n\n/* The side navigation menu */\n\n.sidenav {\n\n    height: 100%;\n    /* 100% Full-height */\n    width: 0;\n    /* 0 width - change this with JavaScript */\n    position: fixed;\n    /* Stay in place */\n    z-index: 1;\n    /* Stay on top */\n    top: 0;\n    /* Stay at the top */\n    left: 0;\n    background-color: transparent;\n    /* Black*/\n    overflow-x: hidden;\n    /* Disable horizontal scroll */\n    padding-top: 210px;\n    /* Place content 60px from the top */\n    transition: 0.5s;\n    /* 0.5 second transition effect to slide in the sidenav */\n    margin-top:0%;\n}\n\n\n/* The navigation menu links */\n\n.sidenav a {\n    padding: 8px 0px 1px 40px;\n    text-decoration: none;\n    font-size: 12px;\n    color: #818181;\n    display: block;\n    transition: 0.3s;\n}\n\n#upload-icon {\n    background-image: url(" + escape(__webpack_require__(118)) + ");\n    padding:20px;\n    min-height:10px;\n    /* max-width: 10%; */\n    background-repeat: no-repeat;\n    margin-left:30px;\n}\n\n\n\n\n/* When you mouse over the navigation links, change their color */\n\n.sidenav a:hover {\n    color: #f1f1f1;\n}\n\n\n/* Position and style the close button (top right corner) */\n\n.sidenav .closebtn {\n    position: absolute;\n    top: 0;\n    right: 25px;\n    font-size: 36px;\n    margin-left: 50px;\n}\n\n\n/* Media query for sidebar */\n\n@media screen and (max-width: 1000px) and (min-width: 700px) {\n\n    #upload-icon {\n        background-image: url(" + escape(__webpack_require__(118)) + ");\n        padding: 5px;\n        min-height: 10px;\n        /* max-width: 10%; */\n        background-repeat: no-repeat;\n        margin-left: 10px;\n    }\n\n    .sidenav a {\n        padding: 8px 0px 1px 30px;\n\n    }\n\n}\n\n\n/* Style page content - use this if you want to push the page content to the right when you open the side navigation */\n\n#main {\n    transition: margin-left .5s;\n    padding: 20px;\n}\n\n\n/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */\n\n@media screen and (max-height: 450px) {\n    .sidenav {\n        padding-top: 15px;\n    }\n    .sidenav a {\n        font-size: 18px;\n        padding: 8px 0px 1px 30px;\n\n    }\n}\n\n/* Teammates Column */\n.col-md-3 {\n    opacity:0.3;\n}\n.col-sm-3 {\n    margin:0;\n    padding-left: 1px;\n    \n}\n.active {\n    opacity: 1;\n}\n\n.teammate-box {\n    height:510px;\n    background-color:#FFFF;\n    padding: 20px;\n \n}\n.teammate-box-inactive {\n    height: 285px;\n    background-color: #FFFF;\n}\n\n/* Breadcrumb */\n\n.breadcrumb {\n    background-color:transparent;\n    margin-left:32%;\n}\n\n/* Icons */\n\nsvg:hover {\n    fill:#7c8bff;\n}", ""]);
+exports.push([module.i, "/* Hotspot */\n.containerDot {\n    width:20px;\n}\n.circle {\n    width: 20px;\n    height: 20px;\n    border-radius: 999px;\n    background:#7c8bff;\n    margin: 0 auto;\n    margin-top: 10px;\n    color:white;\n    text-align: center;\n    font-family: 'Proxima Nova';\n    position:absolute;\n      top: 50%;\n      left: 60%;\n      /* right: 10;\n      bottom: 10; */\n       cursor: move;\n       /* fallback if grab cursor is unsupported */\n\n       cursor: grab;\n}\n\n.circle2 {\n    width: 20px;\n    height: 20px;\n    border-radius: 999px;\n    background: #7c8bff;\n    margin: 0 auto;\n    margin-top: 10px;\n    color: white;\n    text-align: center;\n    font-family: 'Proxima Nova';\n    position: absolute;\n    top: 50%;\n    left: 70%;\n    /* right: 10;\n      bottom: 10; */\n       cursor: move;\n       /* fallback if grab cursor is unsupported */\n\n       cursor: grab;\n}\n\n.circle3 {\n    width: 20px;\n    height: 20px;\n    border-radius: 999px;\n    background: #7c8bff;\n    margin: 0 auto;\n    margin-top: 10px;\n    color: white;\n    text-align: center;\n    font-family: 'Proxima Nova';\n    position: absolute;\n    top: 50%;\n    left: 80%;\n    /* right: 10;\n      bottom: 10; */\n    cursor: move;\n    /* fallback if grab cursor is unsupported */\n    cursor: grab;\n}\n.pulse1 {\n    position: relative;\n    background: rgb(21, 73, 97);\n    width: 20px;\n    height: 20px;\n    margin: auto;\n    left: 0;\n    bottom: 20px;\n    right: 0;\n    z-index: 1;\n    opacity: 1;\n    border: 3px solid rgb(32, 103, 116);\n    animation: circlepulse 4s linear infinite;\n    -webkit-animation: circlepulse 4s linear infinite;\n    -moz-animation: circlepulse 4s linear infinite;\n    border-radius: 999px;\n    -webkit-border-radius: 999px;\n    -moz-border-radius: 999px;\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    -webkit-box-sizing: border-box;\n}\n\n@-webkit-keyframes circlepulse {\n    0% {\n        -webkit-transform: scale(5.6);\n        opacity: 0;\n    }\n    50% {\n        -webkit-transform: scale(.6);\n        opacity: 0;\n    }\n    60% {\n        -webkit-transform: scale(.9);\n        opacity: .2;\n    }\n    70% {\n        -webkit-transform: scale(1.1);\n        opacity: .35;\n    }\n    80% {\n        -webkit-transform: scale(1.25);\n        opacity: .2;\n    }\n    100% {\n        -webkit-transform: scale(1.4);\n        opacity: 0;\n    }\n}\n\n@-moz-keyframes circlepulse {\n    0% {\n        -moz-transform: scale(.6);\n        opacity: 0;\n    }\n    50% {\n        -moz-transform: scale(.6);\n        opacity: 0;\n    }\n    60% {\n        -moz-transform: scale(.9);\n        opacity: .2;\n    }\n    70% {\n        -moz-transform: scale(1.1);\n        opacity: .35;\n    }\n    80% {\n        -moz-transform: scale(1.25);\n        opacity: .2;\n    }\n    100% {\n        -moz-transform: scale(1.4);\n        opacity: 0;\n    }\n}\n\n@keyframes circlepulse {\n    0% {\n        transform: scale(.6);\n        opacity: 0;\n    }\n    50% {\n        transform: scale(.6);\n        opacity: 0;\n    }\n    60% {\n        transform: scale(.9);\n        opacity: .1;\n    }\n    70% {\n        transform: scale(1.1);\n        opacity: .25;\n    }\n    80% {\n        transform: scale(1.25);\n        opacity: .1;\n    }\n    100% {\n        transform: scale(1.4);\n        opacity: 0;\n    }\n}\n\n\n/* HomePage stylize */\n\n#title-home {\n    color: rgb(246, 247, 255);\n    font-size: 30px;\n    font-weight: 640;\n}\n\n#title-home-instruction {\n    color: #58D9FF;\n}\n\n#title-home-thin {\n    color: white;\n    font-weight: 200;\n}\n\n.home-text {\n    color:white;\n    font-weight: 800;\n    font-size: 18px;\n}\n\n#home-italic {\n\n    color:white;\n    font-style: italic;\n    font-weight: 100;\n    padding-bottom:30px;\n}\n\n/* Upload section stylize */\n.upload-text {\n    margin-top:2%;\n    /* margin-bottom:10%; */\n    text-align: center;\n    font-family: 'Proxima Nova';\n    color: #838383;\n}\n\n.upload-subtitle {\n    /* margin-top: 2%;*/\n    margin-bottom: 10%; \n    text-align: center;\n    font-family: 'Proxima Nova';\n    color: #a3a3a3;\n    font-size: 12px;\n}\n\nstrong {\n    color: #5DB4FF;\n    cursor: pointer;\n}\n\nbody{\n    /* background-color:red; */\n      background-image: url(\"http://res.cloudinary.com/jessicalin/image/upload/v1516419821/he5teer9swelgpntgmld.png\");\n    background-size:100%;\n}\n\n\n/* Title Css */\n.title-content {\n     margin-left:5%;\n     font-family: 'Proxima Nova';\n     padding-bottom:1%;\n     line-height: 185%;\n\n}\n#title {\n    color: #7C8BFF;\n    font-size: 30px;\n    font-weight: 640;\n    \n}\n\n#title-instruction {\n    font-weight: 400;\n    font-size: 15px;\n\n}\n\n/* Sidebar */\n\n/* The side navigation menu */\n\n.sidenav {\n\n    height: 100%;\n    /* 100% Full-height */\n    width: 0;\n    /* 0 width - change this with JavaScript */\n    position: fixed;\n    /* Stay in place */\n    z-index: 1;\n    /* Stay on top */\n    top: 0;\n    /* Stay at the top */\n    left: 0;\n    background-color: transparent;\n    /* Black*/\n    overflow-x: hidden;\n    /* Disable horizontal scroll */\n    padding-top: 210px;\n    /* Place content 60px from the top */\n    transition: 0.5s;\n    /* 0.5 second transition effect to slide in the sidenav */\n    margin-top:0%;\n}\n\n\n/* The navigation menu links */\n\n.sidenav a {\n    padding: 8px 0px 1px 40px;\n    text-decoration: none;\n    font-size: 12px;\n    color: #818181;\n    display: block;\n    transition: 0.3s;\n}\n\n#upload-icon {\n    background-image: url(" + escape(__webpack_require__(118)) + ");\n    padding:20px;\n    min-height:10px;\n    /* max-width: 10%; */\n    background-repeat: no-repeat;\n    margin-left:30px;\n}\n\n\n\n\n/* When you mouse over the navigation links, change their color */\n\n.sidenav a:hover {\n    color: #f1f1f1;\n}\n\n\n/* Position and style the close button (top right corner) */\n\n.sidenav .closebtn {\n    position: absolute;\n    top: 0;\n    right: 25px;\n    font-size: 36px;\n    margin-left: 50px;\n}\n\n\n/* Media query for sidebar */\n\n@media screen and (max-width: 1000px) and (min-width: 700px) {\n\n    #upload-icon {\n        background-image: url(" + escape(__webpack_require__(118)) + ");\n        padding: 5px;\n        min-height: 10px;\n        /* max-width: 10%; */\n        background-repeat: no-repeat;\n        margin-left: 10px;\n    }\n\n    .sidenav a {\n        padding: 8px 0px 1px 30px;\n\n    }\n\n}\n\n\n/* Style page content - use this if you want to push the page content to the right when you open the side navigation */\n\n#main {\n    transition: margin-left .5s;\n    padding: 20px;\n}\n\n\n/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */\n\n@media screen and (max-height: 450px) {\n    .sidenav {\n        padding-top: 15px;\n    }\n    .sidenav a {\n        font-size: 18px;\n        padding: 8px 0px 1px 30px;\n\n    }\n}\n\n/* Teammates Column */\n.col-md-3 {\n    opacity:0.3;\n}\n.col-sm-3 {\n    margin:0;\n    padding-left: 1px;\n    \n}\n.active {\n    opacity: 1;\n}\n\n.teammate-box {\n    height:510px;\n    background-color:#FFFF;\n    padding: 20px;\n \n}\n.teammate-box-inactive {\n    height: 285px;\n    background-color: #FFFF;\n}\n\n/* Breadcrumb */\n\n.breadcrumb {\n    background-color:transparent;\n    margin-left:32%;\n}\n\n/* Icons */\n\nsvg:hover {\n    fill:#7c8bff;\n}\n\n/* Dropzone */\n.drop-zone {\n    width:60px;\n    height:60px;\n    border: 2px;\n    opacity: 0.5;\n    border-radius: 50px;\n    border-style: dotted;\n}\n\n.AddFileButtonStyle {\n    cursor: pointer;\n    background-color: transparent;\n    border-width: 1px;\n    border-radius: 1px;\n    border-color: #7c8bff;\n    color: #7c8bff;\n    margin: 5px;\n    width: 100px;\n    text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -85983,7 +86028,7 @@ process.umask = function() { return 0; };
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(403);
 /* unused harmony reexport HashRouter */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(124);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
+/* unused harmony reexport Link */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(405);
 /* unused harmony reexport MemoryRouter */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(408);
@@ -85993,7 +86038,7 @@ process.umask = function() { return 0; };
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(413);
 /* unused harmony reexport Redirect */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(125);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(68);
 /* unused harmony reexport Router */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(419);
@@ -89116,7 +89161,7 @@ var CommentParent = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'panel-heading' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Comment_js__["Comment"], null)
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Comment_js__["Comment"], { publicId: this.props.publicId })
                             )
                         )
                     ),
@@ -89159,7 +89204,7 @@ var CommentParent = function (_Component) {
 
 
 if (document.getElementById('comment')) {
-    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(CommentParent, null), document.getElementById('comment'));
+    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(CommentParent, { publicId: window.location.pathname.substring(9) }), document.getElementById('comment'));
 }
 
 /***/ }),
@@ -90129,15 +90174,7 @@ var Example = function (_Component) {
                         )
                     )
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'row' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'a',
-                        { href: '/comment' },
-                        ' -> Next'
-                    )
-                )
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'row' })
             );
         }
     }]);
