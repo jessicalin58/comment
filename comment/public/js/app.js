@@ -14260,12 +14260,16 @@ var customStyles = {
     }
 };
 
-// const Comment = ({ match }) => (
-//     <div>
-//        <h3> id: {math.params.this.state.public_id} </h3>
-//     </div>
-// )
-__WEBPACK_IMPORTED_MODULE_11_react_modal___default.a.setAppElement('#main');
+var image_style = {
+    width: 50,
+    height: 40
+
+    // const Comment = ({ match }) => (
+    //     <div>
+    //        <h3> id: {math.params.this.state.public_id} </h3>
+    //     </div>
+    // )
+};__WEBPACK_IMPORTED_MODULE_11_react_modal___default.a.setAppElement('#main');
 
 var Comment = function (_React$Component) {
     _inherits(Comment, _React$Component);
@@ -14299,7 +14303,7 @@ var Comment = function (_React$Component) {
     }, {
         key: 'afterOpenModal',
         value: function afterOpenModal() {
-            this.subtitle.style.color = '#f00';
+            this.subtitle.style.color = '#7c8bff';
         }
     }, {
         key: 'closeModal',
@@ -14315,8 +14319,23 @@ var Comment = function (_React$Component) {
                 allowTaint: true,
                 logging: true,
                 taintTest: false
+
                 // onrendered: save /*0.4.1*/
             }).then(function (canvas) {
+
+                // var extra_canvas = document.createElement("canvas");
+                // extra_canvas.setAttribute('width',200);
+                // extra_canvas.setAttribute('height',200);
+
+                // var ctx = extra_canvas.getContext('2d');
+                // ctx.drawImage(canvas,0,0,canvas.width,canvas.height,0,0,200,200);
+                // var DataURL = extra_canvas.toDataURL();
+                // var img = document.createElement('img');
+                // img.setAttribute('src', DataURL);
+
+                // document.getElementById("renderScreenshot").prepend(img);
+
+
                 var node = document.createElement("li");
                 var textnode = document.createTextNode("test");
 
@@ -14467,17 +14486,12 @@ var Comment = function (_React$Component) {
                         ) : __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('div', null)
                     )
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('input', { type: 'button', id: 'but_screenshot', value: 'Take screenshot', onClick: function onClick() {
-                        _this2.screenshot();
-                    } }),
-                ' ',
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('br', null),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                     'div',
                     { onClick: function onClick() {
                             _this2.openModal();
-                        } },
-                    ' test '
+                        }, style: { borderColor: '#7c8bff', color: '#7c8bff', borderRadius: 15, marginLeft: 5 } },
+                    ' Share Link '
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                     __WEBPACK_IMPORTED_MODULE_11_react_modal___default.a,
@@ -14489,30 +14503,22 @@ var Comment = function (_React$Component) {
                         contentLabel: 'Example Modal'
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                        'button',
+                        { onClick: this.closeModal, style: { borderColor: '#7c8bff', borderRadius: 50, color: '#7c8bff' } },
+                        'x'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                         'h2',
                         { ref: function ref(subtitle) {
                                 return _this2.subtitle = subtitle;
                             } },
-                        'Hello'
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                        'button',
-                        { onClick: this.closeModal },
-                        'close'
+                        'Share your file:'
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                         'div',
                         null,
-                        'I am a modal'
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                        'ul',
-                        { id: 'renderScreenshot' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                            'li',
-                            null,
-                            'no image'
-                        )
+                        ' ',
+                        window.location.href
                     )
                 )
             );
@@ -14528,6 +14534,12 @@ var Comment = function (_React$Component) {
 //     <div className="circle"> 1 </div>
 //     <div className="pulse1"></div>
 // </div>
+
+// <ul id="renderScreenshot" style={image_style}>
+//     <li>no image</li>
+// </ul>
+
+// <input type='button' id='but_screenshot' value='Take screenshot' onClick={() => { this.screenshot() }} /> <br />
 
 /***/ }),
 /* 43 */
@@ -40713,9 +40725,9 @@ var FileUpload = function (_React$Component) {
                         'div',
                         null,
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                            'div',
-                            { onClick: _this5.sendPublicIdData, className: 'AddFileButtonStyle' },
-                            ' Upload Div '
+                            'button',
+                            { onClick: _this5.sendPublicIdData, className: 'AddFileButtonStyle', style: { borderColor: '#7c8bff', 'margin-top': 2 } },
+                            ' Add Notes '
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_router_dom__["b" /* Route */], { path: '/comment/:id', render: function render(props) {
                                 return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Comment_js__["Comment"], _extends({}, props, { publicId: _this5.state.public_id }));
@@ -80068,7 +80080,7 @@ exports = module.exports = __webpack_require__(382)(false);
 
 
 // module
-exports.push([module.i, "/* Hotspot */\n.containerDot {\n    width:20px;\n}\n.circle {\n    width: 20px;\n    height: 20px;\n    border-radius: 999px;\n    background:#7c8bff;\n    margin: 0 auto;\n    margin-top: 10px;\n    color:white;\n    text-align: center;\n    font-family: 'Proxima Nova';\n    position:absolute;\n      top: 50%;\n      left: 60%;\n      /* right: 10;\n      bottom: 10; */\n       cursor: move;\n       /* fallback if grab cursor is unsupported */\n\n       cursor: grab;\n}\n\n.circle2 {\n    width: 20px;\n    height: 20px;\n    border-radius: 999px;\n    background: #7c8bff;\n    margin: 0 auto;\n    margin-top: 10px;\n    color: white;\n    text-align: center;\n    font-family: 'Proxima Nova';\n    position: absolute;\n    top: 50%;\n    left: 70%;\n    /* right: 10;\n      bottom: 10; */\n       cursor: move;\n       /* fallback if grab cursor is unsupported */\n\n       cursor: grab;\n}\n\n.circle3 {\n    width: 20px;\n    height: 20px;\n    border-radius: 999px;\n    background: #7c8bff;\n    margin: 0 auto;\n    margin-top: 10px;\n    color: white;\n    text-align: center;\n    font-family: 'Proxima Nova';\n    position: absolute;\n    top: 50%;\n    left: 80%;\n    /* right: 10;\n      bottom: 10; */\n    cursor: move;\n    /* fallback if grab cursor is unsupported */\n    cursor: grab;\n}\n.pulse1 {\n    position: relative;\n    background: rgb(21, 73, 97);\n    width: 20px;\n    height: 20px;\n    margin: auto;\n    left: 0;\n    bottom: 20px;\n    right: 0;\n    z-index: 1;\n    opacity: 1;\n    border: 3px solid rgb(32, 103, 116);\n    animation: circlepulse 4s linear infinite;\n    -webkit-animation: circlepulse 4s linear infinite;\n    -moz-animation: circlepulse 4s linear infinite;\n    border-radius: 999px;\n    -webkit-border-radius: 999px;\n    -moz-border-radius: 999px;\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    -webkit-box-sizing: border-box;\n}\n\n@-webkit-keyframes circlepulse {\n    0% {\n        -webkit-transform: scale(5.6);\n        opacity: 0;\n    }\n    50% {\n        -webkit-transform: scale(.6);\n        opacity: 0;\n    }\n    60% {\n        -webkit-transform: scale(.9);\n        opacity: .2;\n    }\n    70% {\n        -webkit-transform: scale(1.1);\n        opacity: .35;\n    }\n    80% {\n        -webkit-transform: scale(1.25);\n        opacity: .2;\n    }\n    100% {\n        -webkit-transform: scale(1.4);\n        opacity: 0;\n    }\n}\n\n@-moz-keyframes circlepulse {\n    0% {\n        -moz-transform: scale(.6);\n        opacity: 0;\n    }\n    50% {\n        -moz-transform: scale(.6);\n        opacity: 0;\n    }\n    60% {\n        -moz-transform: scale(.9);\n        opacity: .2;\n    }\n    70% {\n        -moz-transform: scale(1.1);\n        opacity: .35;\n    }\n    80% {\n        -moz-transform: scale(1.25);\n        opacity: .2;\n    }\n    100% {\n        -moz-transform: scale(1.4);\n        opacity: 0;\n    }\n}\n\n@keyframes circlepulse {\n    0% {\n        transform: scale(.6);\n        opacity: 0;\n    }\n    50% {\n        transform: scale(.6);\n        opacity: 0;\n    }\n    60% {\n        transform: scale(.9);\n        opacity: .1;\n    }\n    70% {\n        transform: scale(1.1);\n        opacity: .25;\n    }\n    80% {\n        transform: scale(1.25);\n        opacity: .1;\n    }\n    100% {\n        transform: scale(1.4);\n        opacity: 0;\n    }\n}\n\n\n/* HomePage stylize */\n\n#title-home {\n    color: rgb(246, 247, 255);\n    font-size: 30px;\n    font-weight: 640;\n}\n\n#title-home-instruction {\n    color: #58D9FF;\n}\n\n#title-home-thin {\n    color: white;\n    font-weight: 200;\n}\n\n.home-text {\n    color:white;\n    font-weight: 800;\n    font-size: 18px;\n}\n\n#home-italic {\n\n    color:white;\n    font-style: italic;\n    font-weight: 100;\n    padding-bottom:30px;\n}\n\n/* Upload section stylize */\n.upload-text {\n    margin-top:2%;\n    /* margin-bottom:10%; */\n    text-align: center;\n    font-family: 'Proxima Nova';\n    color: #838383;\n}\n\n.upload-subtitle {\n    /* margin-top: 2%;*/\n    margin-bottom: 10%; \n    text-align: center;\n    font-family: 'Proxima Nova';\n    color: #a3a3a3;\n    font-size: 12px;\n}\n\nstrong {\n    color: #5DB4FF;\n    cursor: pointer;\n}\n\nbody{\n    /* background-color:red; */\n      background-image: url(\"http://res.cloudinary.com/jessicalin/image/upload/v1516419821/he5teer9swelgpntgmld.png\");\n    background-size:100%;\n}\n\n\n/* Title Css */\n.title-content {\n     margin-left:5%;\n     font-family: 'Proxima Nova';\n     padding-bottom:1%;\n     line-height: 185%;\n\n}\n#title {\n    color: #7C8BFF;\n    font-size: 30px;\n    font-weight: 640;\n    \n}\n\n#title-instruction {\n    font-weight: 400;\n    font-size: 15px;\n\n}\n\n/* Sidebar */\n\n/* The side navigation menu */\n\n.sidenav {\n\n    height: 100%;\n    /* 100% Full-height */\n    width: 0;\n    /* 0 width - change this with JavaScript */\n    position: fixed;\n    /* Stay in place */\n    z-index: 1;\n    /* Stay on top */\n    top: 0;\n    /* Stay at the top */\n    left: 0;\n    background-color: transparent;\n    /* Black*/\n    overflow-x: hidden;\n    /* Disable horizontal scroll */\n    padding-top: 210px;\n    /* Place content 60px from the top */\n    transition: 0.5s;\n    /* 0.5 second transition effect to slide in the sidenav */\n    margin-top:0%;\n}\n\n\n/* The navigation menu links */\n\n.sidenav a {\n    padding: 8px 0px 1px 40px;\n    text-decoration: none;\n    font-size: 12px;\n    color: #818181;\n    display: block;\n    transition: 0.3s;\n}\n\n#upload-icon {\n    background-image: url(" + escape(__webpack_require__(118)) + ");\n    padding:20px;\n    min-height:10px;\n    /* max-width: 10%; */\n    background-repeat: no-repeat;\n    margin-left:30px;\n}\n\n\n\n\n/* When you mouse over the navigation links, change their color */\n\n.sidenav a:hover {\n    color: #f1f1f1;\n}\n\n\n/* Position and style the close button (top right corner) */\n\n.sidenav .closebtn {\n    position: absolute;\n    top: 0;\n    right: 25px;\n    font-size: 36px;\n    margin-left: 50px;\n}\n\n\n/* Media query for sidebar */\n\n@media screen and (max-width: 1000px) and (min-width: 700px) {\n\n    #upload-icon {\n        background-image: url(" + escape(__webpack_require__(118)) + ");\n        padding: 5px;\n        min-height: 10px;\n        /* max-width: 10%; */\n        background-repeat: no-repeat;\n        margin-left: 10px;\n    }\n\n    .sidenav a {\n        padding: 8px 0px 1px 30px;\n\n    }\n\n}\n\n\n/* Style page content - use this if you want to push the page content to the right when you open the side navigation */\n\n#main {\n    transition: margin-left .5s;\n    padding: 20px;\n}\n\n\n/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */\n\n@media screen and (max-height: 450px) {\n    .sidenav {\n        padding-top: 15px;\n    }\n    .sidenav a {\n        font-size: 18px;\n        padding: 8px 0px 1px 30px;\n\n    }\n}\n\n/* Teammates Column */\n.col-md-3 {\n    opacity:0.3;\n}\n.col-sm-3 {\n    margin:0;\n    padding-left: 1px;\n    \n}\n.active {\n    opacity: 1;\n}\n\n.teammate-box {\n    height:510px;\n    background-color:#FFFF;\n    padding: 20px;\n \n}\n.teammate-box-inactive {\n    height: 285px;\n    background-color: #FFFF;\n}\n\n/* Breadcrumb */\n\n.breadcrumb {\n    background-color:transparent;\n    margin-left:32%;\n}\n\n/* Icons */\n\nsvg:hover {\n    fill:#7c8bff;\n}\n\n/* Dropzone */\n.drop-zone {\n    width:60px;\n    height:60px;\n    border: 2px;\n    opacity: 0.2;\n    border-radius: 50px;\n    border-style: dotted;\n    margin: 5px;\n}\n\n\n    #screen_button,\n.AddFileButtonStyle {\n    position: absolute;\n    right: 0;\n    margin-right: 40px;\n    cursor: pointer;\n    background-color: transparent;\n    border-width: 1px;\n    border-radius: 15px;\n    border-color: #7c8bff;\n    color: #7c8bff;\n    width: 100px;\n    text-align: center;\n}\n\n\n.deleteNoteButton {\n    color: green;\n}\n\nul {\n    padding-left: 5px;\n}\n\n::-webkit-input-placeholder {\n    /* Chrome/Opera/Safari */\n    color: lightgrey;\n}", ""]);
+exports.push([module.i, "/* Hotspot */\n.containerDot {\n    width:20px;\n}\n.circle {\n    width: 20px;\n    height: 20px;\n    border-radius: 999px;\n    background:#7c8bff;\n    margin: 0 auto;\n    margin-top: 10px;\n    color:white;\n    text-align: center;\n    font-family: 'Proxima Nova';\n    position:absolute;\n      top: 50%;\n      left: 60%;\n      /* right: 10;\n      bottom: 10; */\n       cursor: move;\n       /* fallback if grab cursor is unsupported */\n\n       cursor: grab;\n}\n\n.circle2 {\n    width: 20px;\n    height: 20px;\n    border-radius: 999px;\n    background: #7c8bff;\n    margin: 0 auto;\n    margin-top: 10px;\n    color: white;\n    text-align: center;\n    font-family: 'Proxima Nova';\n    position: absolute;\n    top: 50%;\n    left: 70%;\n    /* right: 10;\n      bottom: 10; */\n       cursor: move;\n       /* fallback if grab cursor is unsupported */\n\n       cursor: grab;\n}\n\n.circle3 {\n    width: 20px;\n    height: 20px;\n    border-radius: 999px;\n    background: #7c8bff;\n    margin: 0 auto;\n    margin-top: 10px;\n    color: white;\n    text-align: center;\n    font-family: 'Proxima Nova';\n    position: absolute;\n    top: 50%;\n    left: 80%;\n    /* right: 10;\n      bottom: 10; */\n    cursor: move;\n    /* fallback if grab cursor is unsupported */\n    cursor: grab;\n}\n.pulse1 {\n    position: relative;\n    background: rgb(21, 73, 97);\n    width: 20px;\n    height: 20px;\n    margin: auto;\n    left: 0;\n    bottom: 20px;\n    right: 0;\n    z-index: 1;\n    opacity: 1;\n    border: 3px solid rgb(32, 103, 116);\n    animation: circlepulse 4s linear infinite;\n    -webkit-animation: circlepulse 4s linear infinite;\n    -moz-animation: circlepulse 4s linear infinite;\n    border-radius: 999px;\n    -webkit-border-radius: 999px;\n    -moz-border-radius: 999px;\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    -webkit-box-sizing: border-box;\n}\n\n@-webkit-keyframes circlepulse {\n    0% {\n        -webkit-transform: scale(5.6);\n        opacity: 0;\n    }\n    50% {\n        -webkit-transform: scale(.6);\n        opacity: 0;\n    }\n    60% {\n        -webkit-transform: scale(.9);\n        opacity: .2;\n    }\n    70% {\n        -webkit-transform: scale(1.1);\n        opacity: .35;\n    }\n    80% {\n        -webkit-transform: scale(1.25);\n        opacity: .2;\n    }\n    100% {\n        -webkit-transform: scale(1.4);\n        opacity: 0;\n    }\n}\n\n@-moz-keyframes circlepulse {\n    0% {\n        -moz-transform: scale(.6);\n        opacity: 0;\n    }\n    50% {\n        -moz-transform: scale(.6);\n        opacity: 0;\n    }\n    60% {\n        -moz-transform: scale(.9);\n        opacity: .2;\n    }\n    70% {\n        -moz-transform: scale(1.1);\n        opacity: .35;\n    }\n    80% {\n        -moz-transform: scale(1.25);\n        opacity: .2;\n    }\n    100% {\n        -moz-transform: scale(1.4);\n        opacity: 0;\n    }\n}\n\n@keyframes circlepulse {\n    0% {\n        transform: scale(.6);\n        opacity: 0;\n    }\n    50% {\n        transform: scale(.6);\n        opacity: 0;\n    }\n    60% {\n        transform: scale(.9);\n        opacity: .1;\n    }\n    70% {\n        transform: scale(1.1);\n        opacity: .25;\n    }\n    80% {\n        transform: scale(1.25);\n        opacity: .1;\n    }\n    100% {\n        transform: scale(1.4);\n        opacity: 0;\n    }\n}\n\n\n/* HomePage stylize */\n\n#title-home {\n    color: rgb(246, 247, 255);\n    font-size: 30px;\n    font-weight: 640;\n}\n\n#title-home-instruction {\n    color: #58D9FF;\n}\n\n#title-home-thin {\n    color: white;\n    font-weight: 200;\n}\n\n.home-text {\n    color:white;\n    font-weight: 800;\n    font-size: 18px;\n}\n\n#home-italic {\n\n    color:white;\n    font-style: italic;\n    font-weight: 100;\n    padding-bottom:30px;\n}\n\n/* Upload section stylize */\n.upload-text {\n    margin-top:2%;\n    /* margin-bottom:10%; */\n    text-align: center;\n    font-family: 'Proxima Nova';\n    color: #838383;\n}\n\n.upload-subtitle {\n    /* margin-top: 2%;*/\n    margin-bottom: 10%; \n    text-align: center;\n    font-family: 'Proxima Nova';\n    color: #a3a3a3;\n    font-size: 12px;\n}\n\nstrong {\n    color: #5DB4FF;\n    cursor: pointer;\n}\n\nbody{\n    /* background-color:red; */\n      background-image: url(\"http://res.cloudinary.com/jessicalin/image/upload/v1516419821/he5teer9swelgpntgmld.png\");\n    background-size:100%;\n}\n\n\n/* Title Css */\n.title-content {\n     margin-left:5%;\n     font-family: 'Proxima Nova';\n     padding-bottom:1%;\n     line-height: 185%;\n\n}\n#title {\n    color: #7C8BFF;\n    font-size: 30px;\n    font-weight: 640;\n    \n}\n\n#title-instruction {\n    font-weight: 400;\n    font-size: 15px;\n\n}\n\n/* Sidebar */\n\n/* The side navigation menu */\n\n.sidenav {\n\n    height: 100%;\n    /* 100% Full-height */\n    width: 0;\n    /* 0 width - change this with JavaScript */\n    position: fixed;\n    /* Stay in place */\n    z-index: 1;\n    /* Stay on top */\n    top: 0;\n    /* Stay at the top */\n    left: 0;\n    background-color: transparent;\n    /* Black*/\n    overflow-x: hidden;\n    /* Disable horizontal scroll */\n    padding-top: 210px;\n    /* Place content 60px from the top */\n    transition: 0.5s;\n    /* 0.5 second transition effect to slide in the sidenav */\n    margin-top:0%;\n}\n\n\n/* The navigation menu links */\n\n.sidenav a {\n    padding: 8px 0px 1px 40px;\n    text-decoration: none;\n    font-size: 12px;\n    color: #818181;\n    display: block;\n    transition: 0.3s;\n}\n\n#upload-icon {\n    background-image: url(" + escape(__webpack_require__(118)) + ");\n    padding:20px;\n    min-height:10px;\n    /* max-width: 10%; */\n    background-repeat: no-repeat;\n    margin-left:30px;\n}\n\n\n\n\n/* When you mouse over the navigation links, change their color */\n\n.sidenav a:hover {\n    color: #f1f1f1;\n}\n\n\n/* Position and style the close button (top right corner) */\n\n.sidenav .closebtn {\n    position: absolute;\n    top: 0;\n    right: 25px;\n    font-size: 36px;\n    margin-left: 50px;\n}\n\n\n/* Media query for sidebar */\n\n@media screen and (max-width: 1000px) and (min-width: 700px) {\n\n    #upload-icon {\n        background-image: url(" + escape(__webpack_require__(118)) + ");\n        padding: 5px;\n        min-height: 10px;\n        /* max-width: 10%; */\n        background-repeat: no-repeat;\n        margin-left: 10px;\n    }\n\n    .sidenav a {\n        padding: 8px 0px 1px 30px;\n\n    }\n\n}\n\n\n/* Style page content - use this if you want to push the page content to the right when you open the side navigation */\n\n#main {\n    transition: margin-left .5s;\n    padding: 20px;\n}\n\n\n/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */\n\n@media screen and (max-height: 450px) {\n    .sidenav {\n        padding-top: 15px;\n    }\n    .sidenav a {\n        font-size: 18px;\n        padding: 8px 0px 1px 30px;\n\n    }\n}\n\n/* Teammates Column */\n.col-md-3 {\n    opacity:0.3;\n}\n.col-sm-3 {\n    margin:0;\n    padding-left: 1px;\n    \n}\n.active {\n    opacity: 1;\n}\n\n.teammate-box {\n    height:510px;\n    background-color:#FFFF;\n    padding: 20px;\n \n}\n.teammate-box-inactive {\n    height: 285px;\n    background-color: #FFFF;\n}\n\n/* Breadcrumb */\n\n.breadcrumb {\n    background-color:transparent;\n    margin-left:32%;\n}\n\n/* Icons */\n\nsvg:hover {\n    fill:#7c8bff;\n}\n\n/* Dropzone */\n.drop-zone {\n    width:60px;\n    height:60px;\n    border: 2px;\n    opacity: 0.2;\n    border-radius: 50px;\n    border-style: dotted;\n    margin: 5px;\n}\n\n\n    #screen_button{\n    position: absolute;\n    right: 0;\n    margin-right: 40px;\n    cursor: pointer;\n    background-color: transparent;\n    border-width: 1px;\n    border-radius: 15px;\n    border-color: #7c8bff;\n    color: #7c8bff;\n    width: 100px;\n    text-align: center;\n}\n\n.AddFileButtonStyle {\n    bottom: 0;\n    position: absolute;\n    right: 0;\n    margin-right: 40px;\n    cursor: pointer;\n    background-color: transparent;\n    border-width: 1px;\n    border-radius: 15px;\n    border-color: #7c8bff;\n    color: #7c8bff;\n    width: 100px;\n    text-align: center;\n}\n\n\n.deleteNoteButton {\n    color: green;\n}\n\nul {\n    padding-left: 5px;\n}\n\n::-webkit-input-placeholder {\n    /* Chrome/Opera/Safari */\n    color: lightgrey;\n}\n\ncanvas {\n    width: 800px;\n}", ""]);
 
 // exports
 
@@ -89430,14 +89442,8 @@ var CommentParent = function (_Component) {
                             } }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'div',
-                            { onClick: this.openModal },
-                            ' Button from commentparen '
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             __WEBPACK_IMPORTED_MODULE_5_react_modal___default.a,
                             {
-                                aria: {},
                                 isOpen: this.state.modalIsOpen,
                                 onAfterOpen: this.afterOpenModal,
                                 onRequestClose: this.closeModal,
@@ -89521,6 +89527,8 @@ var CommentParent = function (_Component) {
 if (document.getElementById('comment')) {
     __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(CommentParent, { publicId: window.location.pathname.substring(9) }), document.getElementById('comment'));
 }
+
+// <div onClick={this.openModal}> Comment:Parent -> Open Modal </div>
 
 /***/ }),
 /* 428 */

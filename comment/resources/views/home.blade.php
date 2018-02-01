@@ -32,14 +32,16 @@
 	                    </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
                 </svg>
                 </a> 
-                <div> Upload a new file </div>
+                <div> <a href="/upload">Upload a new file </a> </div>
             </div>
         </div>
     </div>
     <div class="col-md-4"  style="text-align:center;width:40%; padding:20px 20px 10px 20px">
         <div class="panel panel-default">
-            <div clas="panel-body" style="padding: 50px 20px 50px 20px">
-                <div> <OldFiles />  </div>
+            <div clas="panel-body" style="padding: 10px 10px 10px 10px">
+                <div> <a href="http://localhost:8000/comment/ag7zkeqqhkzgvvvpydhn" >
+                    <img src="http://res.cloudinary.com/jessicalin/image/upload/v1517506583/ag7zkeqqhkzgvvvpydhn.png"
+                            style="width:90%">  </div> </a>
             </div>
         </div>
     </div>

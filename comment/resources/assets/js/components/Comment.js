@@ -35,6 +35,10 @@ const customStyles = {
     }
 };
 
+const image_style = {
+    width: 50,
+    height: 40
+}
 
 
 // const Comment = ({ match }) => (
@@ -70,7 +74,7 @@ export class Comment extends React.Component {
     }
 
     afterOpenModal(){
-        this.subtitle.style.color = '#f00';
+        this.subtitle.style.color = '#7c8bff';
     }
 
     closeModal(){
@@ -84,8 +88,24 @@ export class Comment extends React.Component {
                 allowTaint: true,
                 logging: true,
                 taintTest: false,
+              
                 // onrendered: save /*0.4.1*/
             }).then( function (canvas){
+
+                // var extra_canvas = document.createElement("canvas");
+                // extra_canvas.setAttribute('width',200);
+                // extra_canvas.setAttribute('height',200);
+
+                // var ctx = extra_canvas.getContext('2d');
+                // ctx.drawImage(canvas,0,0,canvas.width,canvas.height,0,0,200,200);
+                // var DataURL = extra_canvas.toDataURL();
+                // var img = document.createElement('img');
+                // img.setAttribute('src', DataURL);
+
+                // document.getElementById("renderScreenshot").prepend(img);
+
+
+
                 var node = document.createElement("li");
                 var textnode = document.createTextNode("test");
 
@@ -230,8 +250,7 @@ export class Comment extends React.Component {
 
               
 
-                <input type='button' id='but_screenshot' value='Take screenshot' onClick={() => { this.screenshot() }} /> <br />
-                <div onClick={() => {this.openModal()}}> test </div>
+                <div onClick={() => { this.openModal() }} style={{ borderColor: '#7c8bff', color: '#7c8bff', borderRadius: 15, marginLeft: 5 }}> Share Link </div>
 
                 <Modal
                     isOpen={this.state.modalIsOpen}
@@ -240,16 +259,13 @@ export class Comment extends React.Component {
                     style={customStyles}
                     contentLabel="Example Modal"
                 >
-                    <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-                    <button onClick={this.closeModal}>close</button>
-                    <div>I am a modal</div>
-                    <ul id="renderScreenshot">
-                        <li>no image</li>
-                    </ul>
+                    <button onClick={this.closeModal} style={{borderColor:'#7c8bff', borderRadius:50, color:'#7c8bff'}}>x</button>
+                    <h2 ref={subtitle => this.subtitle = subtitle}>Share your file:</h2>
+                    <div> {window.location.href}</div>
+                 
 
                 </Modal>
-
-
+            
             </form>
         )
     }
@@ -262,3 +278,9 @@ export default Comment;
                             //     <div className="circle"> 1 </div>
                             //     <div className="pulse1"></div>
                             // </div>
+
+// <ul id="renderScreenshot" style={image_style}>
+//     <li>no image</li>
+// </ul>
+
+// <input type='button' id='but_screenshot' value='Take screenshot' onClick={() => { this.screenshot() }} /> <br />

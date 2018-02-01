@@ -73,11 +73,7 @@ export default class CommentParent extends Component {
                             
                         </div>
                         <input type='button' id='screen_button' value='Export File' onClick={() => { this.screenshot() }} /><br />
-                        <div onClick={this.openModal}> Button from commentparen </div>
                         <Modal
-                            aria={{
-
-                            }}
                             isOpen={this.state.modalIsOpen}
                             onAfterOpen={this.afterOpenModal}
                             onRequestClose={this.closeModal}
@@ -121,4 +117,7 @@ export default class CommentParent extends Component {
 if (document.getElementById('comment')) {
     ReactDOM.render(<CommentParent publicId={window.location.pathname.substring(9)} />, document.getElementById('comment'));
 }
+
+// <div onClick={this.openModal}> Comment:Parent -> Open Modal </div>
+
 

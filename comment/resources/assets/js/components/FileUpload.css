@@ -411,8 +411,22 @@ svg:hover {
 }
 
 
-    #screen_button,
+    #screen_button{
+    position: absolute;
+    right: 0;
+    margin-right: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: #7c8bff;
+    color: #7c8bff;
+    width: 100px;
+    text-align: center;
+}
+
 .AddFileButtonStyle {
+    bottom: 0;
     position: absolute;
     right: 0;
     margin-right: 40px;
@@ -438,4 +452,8 @@ ul {
 ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: lightgrey;
+}
+
+canvas {
+    width: 800px;
 }
