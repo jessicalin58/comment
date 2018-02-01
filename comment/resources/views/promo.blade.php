@@ -206,7 +206,7 @@ li:hover {
 <!-- App Gif Preview -->
     <div class='col-xs-4 col-sm-4 col-md-4 col-lg-4' style='margin-left:  50px;'>
         <div style="border-radius: 10px; width: 450px; height: 280px; overflow: hidden;">  
-            <iframe src="https://giphy.com/embed/l0HU94PLP1dYpjB96"  width="480" height="282" frameBorder="0" class="giphy-embed" allowFullScreen ></iframe><p><a href="https://giphy.com/gifs/comment-l0HU94PLP1dYpjB96">via GIPHY</a></p>
+            <iframe src="https://media.giphy.com/media/l4pTfXbJuOy3YEY5W/giphy.gif"  width="480" height="282" frameBorder="0" class="giphy-embed" allowFullScreen ></iframe><p><a href="https://giphy.com/gifs/comment-l0HU94PLP1dYpjB96">via GIPHY</a></p>
         </div>
     </div>
 
