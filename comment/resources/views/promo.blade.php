@@ -2,6 +2,7 @@
 
 @section('homePage')
 
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <style>
 body{
     /* background-color:red; */
@@ -39,7 +40,7 @@ body{
 }
 
 .title-content {
-    margin-top: 10%;
+    margin-top: 0%;
 
 }
 
@@ -111,6 +112,8 @@ body{
     font-style: italic;
 }
 
+
+
 #depoiment-text{
     /* text-align: left; */
     font-size: 15px;
@@ -141,17 +144,29 @@ body{
     font-weight: 800;
 }
 
+
+li {
+    margin-left: 10px;
+    opacity: 0.5;
+}
+li:hover {
+    opacity: 1;
+}
 </style>
 
 <div id="fullpage">
 
+
 <!-- Section 1 -->
 <div class="section">
+
 <!-- Title Info -->
 <div class="title-content">
 <div id="title-home"> Comment me. </div>
 <div id="title-home-instruction"> Easy file upload. <span id="title-home-thin">better work done</span></div>
 <div id="rectangle"></div>
+        <img src="https://image.ibb.co/ivbH9R/leaf.png" alt="leaf" border="0" style="right: 0;  margin-top: 280px;position:absolute; z-index:3; width: 380px" width: "20px">
+
 </div>
 
 <div class="container-fluid">
@@ -205,8 +220,8 @@ body{
 <div class="slide" id="depoiments"> " Working with <span id="bold">Comment.me</span> is such a breeze. It is our new standard for internal/external communication of our designs. We work in big teams and this app allows us<span id="bold"> to work together in a pretty organized fashion".</span>
     <div class="container">
     <div class="row">
-    <div class="col"><img src="https://image.ibb.co/dvUNKG/depoiment1.png"></div>
-    <div class="col" id="depoiment-text">Poodle Brown, <br>Product Marketing of Willy Wonka Factory</div>
+    <div class="col"><img src="https://image.ibb.co/evQS9R/dog10.png" style="width: 80px;"></div>
+    <div class="col" id="depoiment-text">Poodle Brown, <br>Product Marketing of Purpurina</div>
     </div>
     </div>
 
@@ -214,46 +229,58 @@ body{
 <div class="slide"> " So easy, It was incredible. We have worked with other businesses before and their method is like <span id="bold">waiting in line under the sun with no water and crying babies.</span> Working with comment.me made it so easy to communicate the changes we wanted and how we wanted them to be done. <span id="bold">10/10 would use again."</span>
     <div class="container">
     <div class="row">
-    <div class="col"><img src="https://image.ibb.co/dvUNKG/depoiment1.png"></div>
-    <div class="col" id="depoiment-text">Poodle Brown, <br>Product Marketing of Willy Wonka Factory</div>
+    <div class="col"><img src="https://image.ibb.co/cDUFw6/dog2.png" style="width: 80px;"></div>
+    <div class="col" id="depoiment-text">James Bones, <br>Chief Strategist at Fetch-me</div>
     </div>
     </div>
 </div>
-	<div class="slide"> Slide 2 </div>
-	<div class="slide"> Slide 3 </div>
+<div class="slide"> "Oh my gosh, this thing is incredible! How is this even possible?! I have no idea what it does but man does it look great. It's so simple it only took my daughter 5 tries to explain it to me!" 
+    <div class="container">
+    <div class="row">
+    <div class="col"><img src="https://image.ibb.co/bRjyG6/dog7.png" style="width: 80px;"></div>
+    <div class="col" id="depoiment-text">Ms. Layla <br>Stay at home mom</div>
+    </div>
+    </div>
+</div>
 </div>
 
 
 
 <!-- Section 2 -->
 <div class="section">
-<div class="faq">
+<div class="faq" >
     <h3 id="faq-bold">FAQ</h3>
+        <div class="row">
+            <div class="col-sm-4">
         <h4> What is comment.me? </h4>
                 <li> An app made to help developers and designers to comment or add notes into images </li>
-        <h4>Is it safe to upload my images?</h4>
-                <li> All images are currently being uploaded into "cloudinary" server and it is <i>public</i>. So I wouldn't upload anything personal that might harm you or someone else </li>
         <h4> How do I upload an image? </h4>
                 <li> You can either drag and drop or click on the upload box </li>
-            <h4> How do I share my image? </h4>
+            </div>
+            <div class="col-sm-4">
+        <h4> How do I share my image? </h4>
                 <li> Currently you can only add hotspots and your own comments. Future updates will be released soon </li>
-                <h4> How do I delete a hotspot? </h4>
+        <h4> How do I delete a hotspot? </h4>
                 <li> Double click to delete a hotspot </li>
                     <h4> 
-
-
-
-
-
+            </div>
+            <div class="col-sm-4">
+             <h4>Is it safe to upload my images?</h4>
+                <li> All images are currently being uploaded into "cloudinary" server and it is <i>public</i>. So I wouldn't upload anything personal that might harm you or someone else </li>
+            </div>
             </div>
 
-
+   <footer style=" text-align: center; width: 100%; padding-top: 20%; padding-bottom: 2%">
+        <p style="font-size: 13px">  comment.me copyright @2018 </p> 
+        <i class="fab fa-github" style="font-size: 20px; cursor:pointer"></i>  |  <i class="fas fa-envelope" style="font-size: 20px; cursor:pointer" ></i>
+    </footer>
 </div>
-
 
 </div>
 
 <!-- FullPage -->
+
+
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -262,8 +289,22 @@ body{
 
 <script>
     $(document).ready(function() {
-	$('#fullpage').fullpage();
+    $('#fullpage').fullpage();
+    
+    $(".fab fa-github").click(function(e){
+        var url = "google.com";
+        window.open(url, '_blank');  
 });
+    $(".fas fa-envelope").click(function(e){
+         e.preventDefault();
+         window.location = "http://www.google.com/";    
+    });
+});
+    $(".fab fa-github").click(function(e){
+         e.preventDefault();
+         window.location = "http://www.google.com/";    
+});
+
 </script>
     
 

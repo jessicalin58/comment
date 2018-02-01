@@ -14,21 +14,35 @@ import {
     Redirect
 } from 'react-router-dom'
 
-// import html2canvas from 'html2canvas';
+import html2canvas from 'html2canvas';
+import Modal from 'react-modal';
+
 
 //Upload file box style
 const upload_style = {
     width: '100%',
     height: '150%'
 }
-// html2canvas(document.body).then(function (canvas) {
-//     document.body.appendChild(canvas);
-// });
+
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
+
+
+
 // const Comment = ({ match }) => (
 //     <div>
 //        <h3> id: {math.params.this.state.public_id} </h3>
 //     </div>
 // )
+Modal.setAppElement('#main');
 
 
 
@@ -39,10 +53,62 @@ export class Comment extends React.Component {
             inputLinkOneClicked: false,
             inputLinkTwoClicked: false,
             inputLinkThreeClicked: false,
-            receivedImage: this.props.publicId
+            receivedImage: this.props.publicId,
+            modalIsOpen: false
         };
+        this.screenshot = this.screenshot.bind(this);
     //   this.props.children = this.props.children.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    
     }
+
+    openModal(){
+        this.setState({modalIsOpen:true});
+
+    }
+
+    afterOpenModal(){
+        this.subtitle.style.color = '#f00';
+    }
+
+    closeModal(){
+        this.setState({modalIsOpen:false});
+    }
+
+    screenshot() {
+
+        // $('#save-image').click(function () {
+            html2canvas(document.body, {
+                allowTaint: true,
+                logging: true,
+                taintTest: false,
+                // onrendered: save /*0.4.1*/
+            }).then( function (canvas){
+                var node = document.createElement("li");
+                var textnode = document.createTextNode("test");
+
+                document.getElementById("renderScreenshot").appendChild(canvas);
+                // document.modal.appendChild(canvas);
+                // document.body.appendChild(canvas);
+                // console.log("screenshoted");
+                // console.log(canvas.toDataURL());
+                // document.querySelector('.imageViewCanvas').src = theCanvas.toDataURL();
+            });/*0.5.0-rc*/
+        // });
+
+        
+
+        // html2canvas(document.body).then(function (canvas) {
+        //     {allowTaint: true}
+        //     document.body.appendChild(canvas);
+
+        //     console.log("Screenshot taken");
+        // });
+    }
+
+
     
     handleAddSecondInput() {
         this.setState({
@@ -72,14 +138,16 @@ export class Comment extends React.Component {
             this.setState({
                 inputLinkThreeClicked: true
             })
-        
         ): null
     }
 
 
     componentDidMount(){
-        console.log("componentdidmount state", this.state);
-        console.log("componentdidmount" , this.props);
+        // Modal.setAppElement('body');
+        // Modal.setAppElement('#test');
+
+        // console.log("componentdidmount state", this.state);
+        // console.log("componentdidmount" , this.props);
         // console.log(this.state.receivedImage);
 
     }
@@ -127,7 +195,7 @@ export class Comment extends React.Component {
                          onClick={() => {this.handleAddSecondInput(); this.handleAddThirdInput(); this.handleAddForthInput()}}
                          onDoubleClick={() => this.deleteInput()}
                          >
-                            <Transformation width="650" crop="scale" angle="0" />
+                            <Transformation width="796" crop="scale" angle="0" />
                         </Image>
 
                             {this.state.inputLinkOneClicked ?
@@ -159,6 +227,28 @@ export class Comment extends React.Component {
                     </CloudinaryContext>
 
                 </div>
+
+              
+
+                <input type='button' id='but_screenshot' value='Take screenshot' onClick={() => { this.screenshot() }} /> <br />
+                <div onClick={() => {this.openModal()}}> test </div>
+
+                <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onAfterOpen={this.afterOpenModal}
+                    onRequestClose={this.closeModal}
+                    style={customStyles}
+                    contentLabel="Example Modal"
+                >
+                    <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+                    <button onClick={this.closeModal}>close</button>
+                    <div>I am a modal</div>
+                    <ul id="renderScreenshot">
+                        <li>no image</li>
+                    </ul>
+
+                </Modal>
+
 
             </form>
         )

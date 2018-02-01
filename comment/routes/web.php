@@ -31,6 +31,9 @@ Route::get('/comment', function () {
     return view('comment')->with('infotest');
 });
 
+Route::get('/team',function(){
+    return view('export');
+});
 // Route::get('/comment/{public_id}', ['uses' => 'ProductController@getImageData', 'as'=>'routeName']);
 
 Route::get('/comment/{name?}', function ($name = 'numbers'){

@@ -69,7 +69,7 @@
 <script>
 
   $( document ).ready(function() {
-     document.getElementById("mySidenav").style.width = "150px";
+     document.getElementById("mySidenav").style.width = "80px";
     console.log( "ready!" );
 });
   /* Set the width of the side navigation to 250px */

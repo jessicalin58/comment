@@ -37,6 +37,18 @@ Route::put('products/{product}','ProductsController@update');
  
 Route::delete('products/{product}', 'ProductsController@delete');
 
+
+
+Route::get('comment', 'ProductsController@index');
+ 
+Route::get('comment/{comment}', 'ProductsController@show');
+ 
+Route::post('comment','ProductsController@store');
+ 
+Route::put('comment/{comment}','ProductsController@update');
+ 
+Route::delete('comment/{comment}', 'ProductsController@delete');
+
 /** COMMENTS
 **Basic Routes for a RESTful service:
 **Route::get($uri, $callback);
@@ -46,12 +58,12 @@ Route::delete('products/{product}', 'ProductsController@delete');
 **
 */
 
-Route::get('comments', 'CommentController@index');
+// Route::get('comments', 'CommentController@index');
  
-Route::get('comments/{comment}', 'CommentController@show');
+// Route::get('comments/{comment}', 'CommentController@show');
  
-Route::post('comments','CommentController@store');
+// Route::post('comments','CommentController@store');
  
-Route::put('comments/{comment}','CommentController@update');
+// Route::put('comments/{comment}','CommentController@update');
  
-Route::delete('comments/{comment}', 'CommentController@delete');
+// Route::delete('comments/{comment}', 'CommentController@delete');

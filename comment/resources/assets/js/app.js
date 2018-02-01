@@ -17,8 +17,11 @@ import Main from './components/Main';
 import Comment from './components/Comment';
 import CommentParent from './components/CommentParent';
 import MainComment from './components/MainComment';
+import ExportParent from './components/ExportParent';
+import ExportChild from './components/ExportChild';
 
-require('./components/Product')
+require('./components/ExportChild');
+require('./components/Product');
 require('./components/AddComment');
 require('./components/Example');
 require('./components/Comment');

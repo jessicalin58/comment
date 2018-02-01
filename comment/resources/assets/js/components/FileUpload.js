@@ -207,8 +207,7 @@ export class FileUpload extends React.Component {
                         {this.state.uploadedFileCloudinaryUrl === '' ? null :
                         <div>  
                             <img src={this.state.uploadedFileCloudinaryUrl}/>
-                            <p>{this.state.uploadedFileCloudinaryUrl}</p>
-                            <p>{this.state.public_id}</p>
+                        
                         </div>}
                         
                 </div>
@@ -224,5 +223,6 @@ export class FileUpload extends React.Component {
 // <a href="" onClick={this.handleSubmit} className="icon-button cloudicon"> -> Submit </a>
 
 // <Link to={`/comment/${this.state.public_id}`} > Upload Link </Link>
-
+// <p>{this.state.uploadedFileCloudinaryUrl}</p>
+//     <p>{this.state.public_id}</p>
 export default FileUpload; 

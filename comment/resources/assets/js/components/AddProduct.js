@@ -39,10 +39,10 @@ class AddProduct extends Component {
 
     render(){
         const divStyle = {
-            opacity: 0.4,
+      
             fontFamily: 'Proxima Nova',
             fontWeight: 100,
-            width: 180,
+            width: 220,
             marginTop: 6
         }
 
@@ -52,29 +52,25 @@ class AddProduct extends Component {
             borderRadius: 15,
             borderColor: '#7c8bff',
             color: '#7c8bff',
-            margin: 5
+            margin: 2,
+            marginRight: 5
             
         }
 
         return(
             <div>
                 <div>
-
-                <form onSubmit={this.handleSubmit}>
-              
-                <label>
-                    <input type='text' style={divStyle} placeholder='Type comment here' onChange={(e)=>this.handleInput('comment',e)} />
-                </label>
-                    <div style={{marginLeft: 45}}>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                            <input type='text' style={divStyle} placeholder='Type comment here' onChange={(e)=>this.handleInput('comment',e)} />
+                        </label>
+                    <div style={{marginLeft: 70}}>
                     <input style={addNoteStyle} type="submit" value="+ Add Note" />
                 </div>
-                </form>
+                    </form>
+                </div>
             </div>
-            </div>
-        )
-    }
-
-}
+        )}}
 
 // <label>Title:
 //                     {}

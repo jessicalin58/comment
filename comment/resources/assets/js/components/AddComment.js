@@ -3,6 +3,7 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 import MainComment from './MainComment.js'
 import AddProduct from './AddProduct.js';
+import pencilSVG from './svg/pencil.svg';
 
 import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 import cloudinary from 'cloudinary-core';
@@ -22,6 +23,15 @@ const upload_style = {
     margin: 1
 }
 
+const deleteNoteButton = {
+    borderColor: '#7c8bff',
+    height: 25,
+    width: 25,
+    margin: 3,
+    color: '#7c8bff',
+    borderRadius: 50
+}
+
 class AddComment extends Component {
 
     constructor(props) {
@@ -35,10 +45,11 @@ class AddComment extends Component {
                 title: '',
                 comment: '',
                 url: '',
-                checked: false
+                id:'',
             },
             products: [],
-            currentProduct: null
+            currentProduct: null,
+            checked: true
         }
         this.uploadFile = '';
         this.onImageDrop = this.onImageDrop.bind(this);
@@ -58,8 +69,10 @@ class AddComment extends Component {
             uploadedFile: files[0],
             checked: !this.state.checked
 
+
         });
 
+        console.log(this.state.checked);
         this.handleImageUpload(files[0]);
 
     }
@@ -89,7 +102,7 @@ class AddComment extends Component {
     //Gets called after the component is rendered
     componentDidMount() {
         // Fetch the API
-        fetch('/api/products')
+        fetch('api/products')
             .then(response => {
                 return response.json();
             })
@@ -104,11 +117,15 @@ class AddComment extends Component {
                 // Using a list needs to specify a key attributte for each item
                 //this.handleckick method is invoked on click.
                 <div>
-              
-                <button onClick={
-                    () => this.handleDelete(product)} key={product.id} /> 
+               
+                <button 
+                    onClick={() => this.handleClick(product)}
+                    key={product.id} 
+                    style={deleteNoteButton}
+                    className={deleteNoteButton}> x </button> 
                     {product.comment}
-                
+                    {product.id}
+
                 </div>
             );
         })
@@ -141,6 +158,9 @@ class AddComment extends Component {
     handleClick(product) {
         //set the state of the current product
         this.setState({ currentProduct: product });
+        console.log(this.state.currentProduct);
+       {this.handleDelete()}
+
     }
 
 
@@ -153,8 +173,6 @@ class AddComment extends Component {
         this.props.onAdd(this.state.newProduct);
     }
     handleAddProduct(product) {
-
-
         // product.price = Number(product.price);
         /*Fetch API for post request */
         fetch('api/products', {
@@ -210,8 +228,7 @@ class AddComment extends Component {
             marginTop: 6
         }
 
-   
-        const hidden = this.state.checked ? '': 'hidden';
+        const hidden = this.state.checked ? ' ' : 'hidden';
 
         return (
             <div>
@@ -222,53 +239,38 @@ class AddComment extends Component {
                             <div className="FileUpload">
 
                                 <Dropzone
-                                    className="drop-zone"                                   
+                                    className="drop-zone-circle"                                   
                                     onDrop={this.onImageDrop.bind(this)}
                                     multiple={false}
                                     accept=".jpg,.png">
-                                    <div className = {hidden}>
-                                    test
+                                    <div className={hidden}>
+                                        <div className = "drop-zone"> 
+                                            <img src={pencilSVG} style={{ 'maxHeight': '25px', 'marginLeft': '26%', 'marginTop': '25%' }} />
+                                     </div>
                                     </div>
                                 </Dropzone>
 
                             </div>
-
                              <div>
-                
-                            {this.state.uploadedFileCloudinaryUrl === '' ? null :
-                             <div>
-                            
-                            <img src={this.state.uploadedFileCloudinaryUrl}
-                            />
-
-                        </div>}
-                </div>
+                                {this.state.uploadedFileCloudinaryUrl === '' ? null :
+                                    <div>
+                                        <img src={this.state.uploadedFileCloudinaryUrl} />
+                                    </div>}
+                              </div>
 
                         </div>
-
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style={{alignSelf:'flex-end'}}>
-                            <strong>Me:</strong>  <Moment date={dateToFormat} /></div>
-                        <div class="col">
-                        <AddProduct onAdd={this.handleAddProduct} />
-                        
-                            <div id="noteAdded"> </div>
-
-                        </div>
-                        <div>
-                            <ul>
-                                {this.renderProducts()}
-                            </ul>
-
-                        </div>
-
-
-                        
-
+                            <strong> Me:</strong>  <Moment date={dateToFormat} /></div>
+                                <div class="col">
+                                     <AddProduct onAdd={this.handleAddProduct} />
+                                        <div id="noteAdded"> </div>
+                                </div>
+                            <div>
+                                 <ul>
+                                    {this.renderProducts()}
+                                </ul>
+                            </div>
                     </div>
-                </div>
-                <div style={divStyle}>
-
-                   
                 </div>
             </div>
         )

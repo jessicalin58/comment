@@ -14,6 +14,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Favicon Link -->
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}">
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- jQuery cdn -->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.css" />
@@ -98,10 +100,15 @@
         </div>
            
         @show
+    <!-- Upload Info -->
+        <!-- Pulling info from React: dash view | component: FileUpload -->
+        <div class="container">
+            @yield('exportPage')
+        </div>
 
   
         <!-- Upload Info -->
-        <!-- Pulling info from React: dash view | component: FileUpload -->
+
         <div class="container">
             @yield('homePage')
         </div>
@@ -128,6 +135,10 @@
 
     <!-- FullPage.js -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.extensions.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 
 </body>
 </html>
