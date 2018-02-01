@@ -4,7 +4,7 @@
 <!-- App Description -->
 <div align="center"> Comment.me makes it easier for designers and clients to communicate back-to-back using note annotation and quick image upload. By adding 'hotspots' directly into the picture, the client/designer can visually identify which element is being referenced it to. No software hassle and complications, <em>it's completely free with, web-based and with no installation required.</em> </div>
 
-##Contents
+## Contents
     - [Contents] (#contents)
         -[Deployed Application] (#deployed-application)
         -[Technologies Used](#technologies-used)
@@ -13,10 +13,10 @@
         -[Future Features](#future-features)
         -[Credits](#credits)
 
-##Deployed Application
+## Deployed Application
 [Heroku] https://guarded-citadel-85004.herokuapp.com/
 
-##Video Instruction 
+## Video Instruction 
 [Vimeo] 
 
 ## Technologies Used 
@@ -24,7 +24,7 @@ Node, React, Laravel & MySQL
 Libraries: Cloudinary-React, Boostrap, FullPage, Html2Canvas, Moment, React-Draggable, React-Dropzone, React-Modal, React-Router-Dom, ReactStrap, Superagent.
 
 
-##Mock-up and User Navigation 
+## Mock-up and User Navigation 
 ![Mockup] (screenshot/mockupnav.gif)
 
 ##Challenges 
