@@ -426,10 +426,9 @@ svg:hover {
 }
 
 .AddFileButtonStyle {
-    bottom: 0;
     position: absolute;
     right: 0;
-    margin-right: 40px;
+    margin-right: 20px;
     cursor: pointer;
     background-color: transparent;
     border-width: 1px;

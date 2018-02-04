@@ -6,12 +6,12 @@
 
 ## Contents
     - [Contents](#contents)
-        -[Deployed Application](#deployed-application)
-        -[Technologies Used](#technologies-used)
-        -[Mockup and User Navigation](#mock-user-navigation)
-        -[Challenges](#challenges)
-        -[Future Features](#future-features)
-        -[Credits](#credits)
+        - [Deployed Application](#deployed-application)
+        - [Technologies Used](#technologies-used)
+        - [Mockup and User Navigation](#mock-user-navigation)
+        - [Challenges](#challenges)
+        - [Future Features](#future-features)
+        - [Credits](#credits)
 
 ## Deployed Application
 [Heroku] https://guarded-citadel-85004.herokuapp.com/
@@ -36,7 +36,20 @@ Libraries: Cloudinary-React, Boostrap, FullPage, Html2Canvas, Moment, React-Drag
 
 Many of these challenges involved using external API's such as Cloudinary to store the uploaded images, and other issues were solved using plain javascript logic. Personally, I'd say that the most challenging part was to generate the new url query <em> with </em> the user's image, and pass it into a new route with different components of React. Since they couldn't be passed using regular props method, it was solved by passing it into the router, then the component parent, and then into the new child. 
 
-## Future Features
+## Future Features (Comment.me 1.2)
+    * User can save their hotspot inputs
+    * User can create a private sharing link
+    * Better upload resolution
+    * Add teammates on click
+    * Hotspot is linked to text input
+
+## Credits
+    * Flaticon (https://www.flaticon.com/)
+    * Code Tuts (https://code.tutsplus.com/tutorials/build-a-react-app-with-laravel-restful-backend-part-1-laravel-5-api--cms-29442)
+    * Mockup (https://dribbble.com/shots/4085416-CryptoTick)
+
+
+
 
 
 

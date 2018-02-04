@@ -160,7 +160,7 @@ export class FileUpload extends React.Component {
             
             <Router>
                 <div>
-                    <button onClick={this.sendPublicIdData} className="AddFileButtonStyle" style={{ borderColor:'#7c8bff', 'margin-top':2}} > Add Notes </button>
+                    <button onClick={this.sendPublicIdData} className="AddFileButtonStyle" style={{ borderColor:'#7c8bff', 'margin-top':18}} > Add Notes </button>
                     <Route path="/comment/:id" render={(props) => (<Comment {...props} publicId={this.state.public_id} />) }  />
                 </div>
             </Router>

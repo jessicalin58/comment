@@ -165,7 +165,7 @@ li:hover {
 <div id="title-home"> Comment me. </div>
 <div id="title-home-instruction"> Easy file upload. <span id="title-home-thin">better work done</span></div>
 <div id="rectangle"></div>
-        <img src="https://image.ibb.co/ivbH9R/leaf.png" alt="leaf" border="0" style="right: 0;  margin-top: 280px;position:absolute; z-index:3; width: 380px" width: "20px">
+        <img src="https://image.ibb.co/ivbH9R/leaf.png" alt="leaf" border="0" style="right: 0;  margin-top: 320px;position:absolute; z-index:3; width: 380px" width: "20px">
 
 </div>
 
@@ -205,8 +205,9 @@ li:hover {
 
 <!-- App Gif Preview -->
     <div class='col-xs-4 col-sm-4 col-md-4 col-lg-4' style='margin-left:  50px;'>
-        <div style="border-radius: 10px; width: 450px; height: 280px; overflow: hidden;">  
-            <iframe src="https://media.giphy.com/media/l4pTfXbJuOy3YEY5W/giphy.gif"  width="480" height="282" frameBorder="0" class="giphy-embed" allowFullScreen ></iframe><p><a href="https://giphy.com/gifs/comment-l0HU94PLP1dYpjB96">via GIPHY</a></p>
+        <div style="border-radius: 10px; width: 480px; height: 250px; overflow: hidden;">  
+            <div style="width:100%;height:0;padding-bottom:53%;position:relative;"><iframe src="https://giphy.com/embed/l4pTfXbJuOy3YEY5W" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/l4pTfXbJuOy3YEY5W">via GIPHY</a></p>
+            <!-- <iframe src="https://media.giphy.com/media/l4pTfXbJuOy3YEY5W/giphy.gif"  width="480" height="282" frameBorder="0" class="giphy-embed" allowFullScreen ></iframe><p><a href="https://giphy.com/gifs/comment-l0HU94PLP1dYpjB96">via GIPHY</a></p> -->
         </div>
     </div>
 
